@@ -44,6 +44,6 @@ Route::group(['prefix' => 'admin', 'as' => '.admin', 'namespace' => 'backend', '
     // Route::view('/dash', 'backend.index');
 });
 
-// Route::view('/home', 'home')->middleware('auth');
+// Route::view('/home', 'home')->middleware('authhhhh');
 
 
