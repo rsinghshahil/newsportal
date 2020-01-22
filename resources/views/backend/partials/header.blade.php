@@ -4,7 +4,7 @@
             <div class="header-wrap">
                <ul class="nav nav-pills">
                                 <li class="nav-item">
-                                    <a class="nav-link " href="#">Home</a>
+                                    <a class="nav-link " href="#">visit site</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Menu 1</a>
@@ -171,10 +171,10 @@
                                         <a href="#">
                                             <i class="zmdi zmdi-settings"></i>Setting</a>
                                     </div>
-                                    <div class="account-dropdown__item">
+                                    <!--<div class="account-dropdown__item">
                                         <a href="#">
                                             <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                    </div>
+                                    </div>-->
                                 </div>
                                 <div class="account-dropdown__footer">
                                     <a href={{ route('logout') }}

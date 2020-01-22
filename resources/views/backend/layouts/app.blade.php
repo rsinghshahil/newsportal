@@ -74,7 +74,7 @@
                                     </li>
                                 </ul>-->
                             </li>
-                            <li>
+                            <!--<li>
                                 <a href="chart.html">
                                     <i class="fas fa-chart-bar"></i>Charts</a>
                             </li>
@@ -147,7 +147,7 @@
                                         <a href="typo.html">Typography</a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li>-->
                         </ul>
                     </div>
                 </nav>

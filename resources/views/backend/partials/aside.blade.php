@@ -31,13 +31,16 @@
                 </li>
                 <li class="has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-tachometer-alt"></i>News</a>
+                        <i class="fa fa-newspaper-o"></i>News</a>
                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                        <li>
-                            <a href="index.html"> <i class="fas fa-chart-bar"></i>Articles</a>
+                   <li>
+                            <a href="index.html"> <i class="fas fa-chart-bar"></i>News</a>
                         </li>
                         <li>
-                            <a href="index2.html"><i class="fas fa-list"></i>Categories</a>
+                            <a href="index.html"> <i class="fas fa-chart-bar"></i>Add News</a>
+                        </li>
+                        <li>
+                            <a href="add-category/create"><i class="fas fa-list"></i>Categories</a>
                         </li>
                         <li>
                             <a href="index3.html"><i class="fas fa-chart-bar"></i>Tags</a>
@@ -45,7 +48,20 @@
 
                     </ul>
                 </li>
-                <li>
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
+                    <i class="fas fa-file-alt"></i>Pages</a>
+                   <ul class="list-unstyled navbar__sub-list js-sub-list">
+                   <li>
+                            <a href="index.html"> <i class="fas fa-chart-bar"></i>Pages</a>
+                        </li>
+                        <li>
+                            <a href="index.html"> <i class="fas fa-chart-bar"></i>Add Pages</a>
+                        </li>
+                
+                    </ul>
+                </li>
+               <!-- <li>
                     <a href="chart.html">
                         <i class="fas fa-chart-bar"></i>Charts</a>
                 </li>
@@ -118,7 +134,7 @@
                             <a href="typo.html">Typography</a>
                         </li>
                     </ul>
-                </li>
+                </li>-->
             </ul>
         </nav>
     </div>

@@ -15,6 +15,8 @@
 //     return view('backend.index');
 // });
 
+//use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
@@ -42,6 +44,9 @@ Route::group(['prefix' => 'admin', 'as' => '.admin', 'namespace' => 'backend', '
     Route::get('/dashboard','DashboardController@index')->name('index');
     // Route::view('/admin', 'admin')->middleware('auth:admin');
     // Route::view('/dash', 'backend.index');
+    Route::resource('/add-category','CategoryController');
+    Route::resource('/all-pages','PageController');
+    Route::resource('/add-news','NewsController');
 });
 
 // Route::view('/home', 'home')->middleware('auth');
