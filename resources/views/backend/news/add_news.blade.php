@@ -44,18 +44,11 @@
                         <label for=" tags " class=" form-control-label ">Add Tags</label>
                     </div>
                     <div class="col-12 col-md-9 ">
-                        
-                        
-                            <div class="tags-input " data-name="tags-input " id="tags ">
-                            </div>
-                        
-                        
+                        <div class="tags-input " data-name="tags-input " id="tags ">
+                        </div>
                     </div>
                     </div>
-
                 </form>
-            
-            
             </div>
             </div>
         </div>
