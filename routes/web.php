@@ -49,6 +49,6 @@ Route::group(['prefix' => 'admin', 'as' => '.admin', 'namespace' => 'backend', '
     Route::resource('/add-news','NewsController');
 });
 
-// Route::view('/home', 'home')->middleware('auth');
+// Route::view('/home', 'home')->middleware('authhhhh');
 
 
