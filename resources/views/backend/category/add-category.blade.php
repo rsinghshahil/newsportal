@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 @section('main-section')
-<div class="main-content" style="padding-top: 60px;">
+<div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">

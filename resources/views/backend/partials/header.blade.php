@@ -4,29 +4,20 @@
             <div class="header-wrap">
                <ul class="nav nav-pills">
                                 <li class="nav-item">
-                                    <a class="nav-link " href="#">visit site</a>
+                                    <a class="nav-link " href="#">Visit site</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Menu 1</a>
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Add New</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Submenu 1-1</a>
-                                        <a class="dropdown-item" href="#">Submenu 1-2</a>
+                                        <a class="dropdown-item" href="#">User</a>
+                                        <a class="dropdown-item" href="#">News</a>
+                                        <a class="dropdown-item" href="#">Pages</a>
+                                        <a class="dropdown-item" href="#">Media</a>
 
                                     </div>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Menu 2</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Menu 3</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Menu 4</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Menu 5</a>
-                                </li>
-                            </ul>
+                               
+                </ul>
                 <div class="header-button">
                     <div class="noti-wrap">
                         <div class="noti__item js-item-menu">
@@ -143,7 +134,7 @@
                     <div class="account-wrap">
                         <div class="account-item clearfix js-item-menu">
                             <div class="image">
-                                <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                <img src="images/icon/avatar-01.jpg" alt="Admin" />
                             </div>
                             <div class="content">
                                 <a class="js-acc-btn" href="#">Robin</a>

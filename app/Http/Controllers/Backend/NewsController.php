@@ -25,7 +25,7 @@ class NewsController extends Controller
     public function create()
     {
         //
-        return view('backend.news.addNews.add_news');
+        return view('backend.news.add_news');
     }
 
     /**
