@@ -30,3 +30,10 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+<
+script >
+    $(document).ready(function() {
+        $('#content').summernote();
+    }); <
+/script>

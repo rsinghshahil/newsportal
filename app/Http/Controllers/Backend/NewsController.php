@@ -42,6 +42,7 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      *
+
      * @param  \App\News  $news
      * @return \Illuminate\Http\Response
      */

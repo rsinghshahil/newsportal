@@ -15,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        //dd('sdfg');
+        //return view('backend.category.add-category');
     }
 
     /**
@@ -25,7 +26,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        //dd('i m here');
+        return view('backend.category.add-category');
     }
 
     /**
@@ -46,6 +48,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Category $category)
+
     {
         //
     }
@@ -53,12 +56,13 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+<<<<<<< HEAD
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function edit(Category $category)
     {
-        //
+
     }
 
     /**
