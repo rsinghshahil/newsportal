@@ -23,40 +23,40 @@
             <div class="col-md-4 ">
             <div class="card ">
                                  
-                                    <div class="card-body card-block ">
-                                        <form action=" " method="post " enctype="multipart/form-data " class="form-horizontal ">
-                                          <div class="row form-group ">
-                                                <div class="col col-md-3 ">
-                                                    <label for="select " class=" form-control-label ">Category</label>
-                                                </div>
-                                                <div class="col-12 col-md-9 ">
-                                                    <select name="select " id="select " class="form-control ">
-                                                        <option value="0 ">Please select</option>
-                                                        <option value="1 ">Sports</option>
-                                                        <option value="2 ">Politics</option>
-                                                        <option value="3 ">Entertainment</option>
-                                                        <option value="3 ">Lifestyle</option>
-                                                    </select>
-                                                </div>
-                                          </div>
-                                          <div class="row form-group ">
-                                            <div class="col col-md-3 ">
-                                                <label for=" tags " class=" form-control-label ">Add Tags</label>
-                                            </div>
-                                            <div class="col-12 col-md-9 ">
-                                                
-                                               
-                                                    <div class="tags-input " data-name="tags-input " id="tags ">
-                                                    </div>
-                                               
-                                                
-                                            </div>
-                                          </div>
+            <div class="card-body card-block ">
+                <form action=" " method="post " enctype="multipart/form-data " class="form-horizontal ">
+                    <div class="row form-group ">
+                        <div class="col col-md-3 ">
+                            <label for="select " class=" form-control-label ">Category</label>
+                        </div>
+                        <div class="col-12 col-md-9 ">
+                            <select name="select " id="select " class="form-control ">
+                                <option value="0 ">Please select</option>
+                                <option value="1 ">Sports</option>
+                                <option value="2 ">Politics</option>
+                                <option value="3 ">Entertainment</option>
+                                <option value="3 ">Lifestyle</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group ">
+                    <div class="col col-md-3 ">
+                        <label for=" tags " class=" form-control-label ">Add Tags</label>
+                    </div>
+                    <div class="col-12 col-md-9 ">
+                        
+                        
+                            <div class="tags-input " data-name="tags-input " id="tags ">
+                            </div>
+                        
+                        
+                    </div>
+                    </div>
 
-                                        </form>
-                                    
-                                 
-                                    </div>
+                </form>
+            
+            
+            </div>
             </div>
         </div>
         </div>
