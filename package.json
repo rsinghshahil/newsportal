@@ -25,6 +25,5 @@
     },
     "dependencies": {
         "codemirror": "^5.51.0"
-
     }
 }

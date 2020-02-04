@@ -3,20 +3,19 @@
         <div class="container-fluid">
             <div class="header-wrap">
                <ul class="nav nav-pills">
-                                <li class="nav-item">
-                                    <a class="nav-link " href="#">Visit site</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Add New</a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">User</a>
-                                        <a class="dropdown-item" href="#">News</a>
-                                        <a class="dropdown-item" href="#">Pages</a>
-                                        <a class="dropdown-item" href="#">Media</a>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">Visit site</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Add New</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">User</a>
+                            <a class="dropdown-item" href="#">News</a>
+                            <a class="dropdown-item" href="#">Pages</a>
+                            <a class="dropdown-item" href="#">Media</a>
 
-                                    </div>
-                                </li>
-                               
+                        </div>
+                    </li>
                 </ul>
                 <div class="header-button">
                     <div class="noti-wrap">
@@ -29,7 +28,7 @@
                                 </div>
                                 <div class="mess__item">
                                     <div class="image img-cir img-40">
-                                        <img src="images/icon/avatar-06.jpg" alt="Michelle Moreno" />
+                                        <img src="{{asset('/backend/images/icon/avatar-06.jpg')}}" alt="Michelle Moreno" />
                                     </div>
                                     <div class="content">
                                         <h6>Michelle Moreno</h6>
@@ -39,7 +38,7 @@
                                 </div>
                                 <div class="mess__item">
                                     <div class="image img-cir img-40">
-                                        <img src="images/icon/avatar-04.jpg" alt="Diane Myers" />
+                                        <img src="{{asset('/backend/images/icon/avatar-04.jpg')}}" alt="Diane Myers" />
                                     </div>
                                     <div class="content">
                                         <h6>Diane Myers</h6>
@@ -61,7 +60,7 @@
                                 </div>
                                 <div class="email__item">
                                     <div class="image img-cir img-40">
-                                        <img src="images/icon/avatar-06.jpg" alt="Cynthia Harvey" />
+                                        <img src="{{asset('/backend/images/icon/avatar-06.jpg')}}" alt="Cynthia Harvey" />
                                     </div>
                                     <div class="content">
                                         <p>Meeting about new dashboard...</p>
@@ -70,7 +69,7 @@
                                 </div>
                                 <div class="email__item">
                                     <div class="image img-cir img-40">
-                                        <img src="images/icon/avatar-05.jpg" alt="Cynthia Harvey" />
+                                        <img src="{{asset('/backend/images/icon/avatar-05.jpg')}}" alt="Cynthia Harvey" />
                                     </div>
                                     <div class="content">
                                         <p>Meeting about new dashboard...</p>
@@ -79,7 +78,7 @@
                                 </div>
                                 <div class="email__item">
                                     <div class="image img-cir img-40">
-                                        <img src="images/icon/avatar-04.jpg" alt="Cynthia Harvey" />
+                                        <img src="{{asset('/backend/images/icon/avatar-04.jpg')}}" alt="Cynthia Harvey" />
                                     </div>
                                     <div class="content">
                                         <p>Meeting about new dashboard...</p>
@@ -134,7 +133,7 @@
                     <div class="account-wrap">
                         <div class="account-item clearfix js-item-menu">
                             <div class="image">
-                                <img src="images/icon/avatar-01.jpg" alt="Admin" />
+                                <img src="{{asset('/backend/images/icon/avatar-01.jpg')}}" alt="Admin" />
                             </div>
                             <div class="content">
                                 <a class="js-acc-btn" href="#">Robin</a>
@@ -143,7 +142,7 @@
                                 <div class="info clearfix">
                                     <div class="image">
                                         <a href="#">
-                                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                            <img src="{{asset('/backend/images/icon/avatar-01.jpg')}}" alt="John Doe" />
                                         </a>
                                     </div>
                                     <div class="content">

@@ -31,9 +31,3 @@ const app = new Vue({
     el: '#app',
 });
 
-<
-script >
-    $(document).ready(function() {
-        $('#content').summernote();
-    }); <
-/script>
