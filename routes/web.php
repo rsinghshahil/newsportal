@@ -40,7 +40,7 @@ Route::post('/login/admin', 'Auth\LoginController@adminLogin');
 Route::post('/register/admin', 'Auth\RegisterController@createAdmin');
 
 // These are the dashboards routes
-Route::group(['prefix' => 'admin', 'as' => '.admin', 'namespace' => 'backend', 'middleware' => 'auth:admin'], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'backend', 'middleware' => 'auth:admin'], function () {
     Route::get('/dashboard','DashboardController@index')->name('index');
     // Route::view('/admin', 'admin')->middleware('auth:admin');
     // Route::view('/dash', 'backend.index');

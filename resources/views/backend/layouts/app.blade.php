@@ -30,11 +30,13 @@
     <link href="{{asset('backend/vendor/select2/select2.min.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('backend/vendor/perfect-scrollbar/perfect-scrollbar.css')}}" rel="stylesheet" media="all">
 
-    <!-- Main CSS-->
-    <link href="{{asset('backend/css/theme.css')}}" rel="stylesheet" media="all">
     <!-- tags css-->
     <link href="{{asset('backend/tags/tags.css')}}" rel="stylesheet" media="all">
-
+    <link href="{{asset('backend/ckeditor/ck-image.css')}}" rel="stylesheet" media="all">
+    <!-- Main CSS-->
+    <link href="{{asset('backend/css/theme.css')}}" rel="stylesheet" media="all">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <link type="text/css" rel="stylesheet" href="{{asset('backend/css/custom.css')}}"/>
 </head>
 
 <body class="animsition">
@@ -61,68 +63,68 @@
                             <li class="has-sub">
                                 <a class="js-arrow" href="#">
                                     <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                               
+
                             </li>
                              <li class="has-sub">
-                    <a class="js-arrow" href="#">
-                        <i class="fa fa-users"></i>Users</a>
-                   <ul class="list-unstyled navbar__sub-list js-sub-list">
-                   
-                        <li>
-                            <a href="index.html"> <i class="fa fa-user-plus"></i>Add New</a>
-                        </li>
-                        <li>
-                            <a href="add-category/create"><i class="fa fa-user"></i>All Users</a>
-                        </li>
-                   
-                    </ul>
-                </li>
-                <li class="has-sub">
-                    <a class="js-arrow" href="#">
-                        <i class="fa fa-newspaper-o"></i>News</a>
-                   <ul class="list-unstyled navbar__sub-list js-sub-list">
-                   <li>
-                            <a href="index.html"> <i class="fas fa-chart-bar"></i>News</a>
-                        </li>
-                        <li>
-                            <a href="index.html"> <i class="fa fa-plus-square"></i>Add News</a>
-                        </li>
-                        <li>
-                            <a href="add-category/create"><i class="fas fa-list"></i>Categories</a>
-                        </li>
-                        <li>
-                            <a href="index3.html"><i class="fas fa-chart-bar"></i>Tags</a>
-                        </li>
+                            <a class="js-arrow" href="#">
+                                <i class="fa fa-users"></i>Users</a>
+                                <ul class="list-unstyled navbar__sub-list js-sub-list">
 
-                    </ul>
-                </li>
-                <li class="has-sub">
-                    <a class="js-arrow" href="#">
-                    <i class="fas fa-file-alt"></i>Pages</a>
-                   <ul class="list-unstyled navbar__sub-list js-sub-list">
-                   <li>
-                            <a href="index.html"> <i class="fas fa-chart-bar"></i>Pages</a>
-                        </li>
-                        <li>
-                            <a href="index.html"> <i class="fa fa-plus-square"></i>Add Pages</a>
-                        </li>
-                
-                    </ul>
-                </li>
-                <li class="has-sub">
-                    <a class="js-arrow" href="#">
-                    <i class="fa fa-picture-o"></i>Media</a>
-                   <ul class="list-unstyled navbar__sub-list js-sub-list">
-                   <li>
-                            <a href="index.html"> <i class="fa fa-picture-o"></i>Library</a>
-                        </li>
-                        <li>
-                            <a href="index.html"> <i class="fa fa-plus-square"></i>Add New</a>
-                        </li>
-                
-                    </ul>
-                </li>
-                            
+                                <li>
+                                    <a href="index.html"> <i class="fa fa-user-plus"></i>Add New</a>
+                                </li>
+                                <li>
+                                    <a href="add-category/create"><i class="fa fa-user"></i>All Users</a>
+                                </li>
+
+                            </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a class="js-arrow" href="#">
+                                    <i class="fa fa-newspaper-o"></i>News</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                            <li>
+                                        <a href="index.html"> <i class="fas fa-chart-bar"></i>News</a>
+                                    </li>
+                                    <li>
+                                        <a href="index.html"> <i class="fa fa-plus-square"></i>Add News</a>
+                                    </li>
+                                    <li>
+                                        <a href="add-category/create"><i class="fas fa-list"></i>Categories</a>
+                                    </li>
+                                    <li>
+                                        <a href="index3.html"><i class="fas fa-chart-bar"></i>Tags</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a class="js-arrow" href="#">
+                                <i class="fas fa-file-alt"></i>Pages</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                            <li>
+                                        <a href="index.html"> <i class="fas fa-chart-bar"></i>Pages</a>
+                                    </li>
+                                    <li>
+                                        <a href="index.html"> <i class="fa fa-plus-square"></i>Add Pages</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a class="js-arrow" href="#">
+                                <i class="fa fa-picture-o"></i>Media</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                            <li>
+                                        <a href="index.html"> <i class="fa fa-picture-o"></i>Library</a>
+                                    </li>
+                                    <li>
+                                        <a href="index.html"> <i class="fa fa-plus-square"></i>Add New</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
                         </ul>
                     </div>
                 </nav>
@@ -142,7 +144,8 @@
 
                 <!-- MAIN CONTENT-->
                     <div class="main-content">
-
+                    {{-- include error section here i.e index --}}
+                        @include('backend.partials.errors')
                     {{-- include main section content here i.e index --}}
                         @yield('main-section')
                     </div>
@@ -159,8 +162,7 @@
     <script src="{{asset('backend/vendor/bootstrap-4.1/popper.min.js')}}"></script>
     <script src="{{asset('backend/vendor/bootstrap-4.1/bootstrap.min.js')}}"></script>
     <!-- Vendor JS       -->
-    <script src="{{asset('backend/vendor/slick/slick.min.js')}}">
-    </script>
+    <script src="{{asset('backend/vendor/slick/slick.min.js')}}"></script>
     <script src="{{asset('backend/vendor/wow/wow.min.js')}}"></script>
     <script src="{{asset('backend/vendor/animsition/animsition.min.js')}}"></script>
     <script src="{{asset('backend/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js')}}">
@@ -175,6 +177,9 @@
     </script>
 
     <!-- Main JS-->
+    @include('sweetalert::alert')
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    @yield('js')
     <script src="{{asset('backend/js/main.js')}}"></script>
 
 </body>

@@ -25,7 +25,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.news.add_news');
     }
 
     /**
@@ -36,7 +36,7 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -83,5 +83,9 @@ class NewsController extends Controller
     public function destroy(News $news)
     {
         //
+    }
+
+    public function what(Request $request){
+        dd($request->all());
     }
 }
