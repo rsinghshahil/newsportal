@@ -78,7 +78,6 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Category $category)
-
     {
         //
     }
@@ -86,7 +85,6 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-<<<<<<< HEAD
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
@@ -102,9 +100,37 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request,$id)
     {
-        //
+        $validatedData = $request->validate([
+            'pcategory_id' => 'required|sometimes',
+            'sub_category' => 'required|max:200',
+            'description' => 'required',
+            ]);
+
+            if ($request->category_id > 0 && $request->sub_category_id == 0){
+                $update = Category::find($request->category_id);
+                $update->name = $request->sub_category;
+                $update->description = $request->description;
+                if(isset($request->pcategory_id) && $request->pcategory_id != 0){
+                    $update->parent_id = $request->pcategory_id;
+                }else{
+                    $update->parent_id = $request->pcategory_id;
+                }
+                $update->save();
+                Alert::success('Success', 'Category Saved!');
+            }
+
+            if ($request->sub_category_id > 0 && $request->category_id == 0 ){
+                $update = Category::find($request->sub_category_id);
+                $update->name = $request->sub_category;
+                $update->description = $request->description;
+                $update->parent_id = $request->pcategory_id;
+                $update->save();
+                Alert::success('Success', 'Subcategory Saved!');
+            }
+
+        return redirect()->back();
     }
 
     /**
@@ -113,8 +139,15 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $delete = Category::find($id);
+        $delete->delete();
+        if($delete->parent_id == 0){
+            Alert::success('Success','Category Deleted');
+        }else{
+            Alert::success('Success','SubCategory Deleted');
+        }
+        return response()->json(['success' => 'Deleted'],200);
     }
 }
