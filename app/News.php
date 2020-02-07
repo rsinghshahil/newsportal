@@ -17,4 +17,7 @@ class News extends Model
             ]
         ];
     }
+    protected $fillable = [
+        'headline', 'content','image'
+    ];
 }

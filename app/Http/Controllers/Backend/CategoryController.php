@@ -48,6 +48,7 @@ class CategoryController extends Controller
 
         Category::create([
             'name' => $request->sub_category,
+            // 'slug' => null,
             'parent_id' => isset($request->pcategory_id) == true ? $request->pcategory_id : 0 ,
             'description' => $request->description,
         ]);
@@ -86,7 +87,6 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-<<<<<<< HEAD
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */

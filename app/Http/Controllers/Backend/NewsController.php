@@ -2,9 +2,19 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\News;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+use DB;
+use App\Photo;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Model;
+
+
+//use Illuminate\Pagination\LengthAwarePaginator;
 
 class NewsController extends Controller
 {
@@ -15,7 +25,20 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        //$news = News::latest()->paginate(5);
+        $news = DB::table('news')
+        ->orderBy('id', 'desc')
+        ->paginate(5);
+        // ->take(5)
+        // ->with([
+        //     'content' => function($query) {
+        //         $query->select(DB::raw('LEFT (text, 50)'));
+        //     }, 
+        //      ])
+        // ->get();
+        return view('backend.news.index',compact('news'))
+        // ->with('i','0');
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -25,7 +48,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return view('backend.news.add_news');
+        return view('backend.news.add-news');
     }
 
     /**
@@ -36,7 +59,31 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $request->validate([
+            'headline' => 'required',
+            'content' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            
+        ]);
+        if($request->has('image')){
+        $imageUpload = $request->file('image');
+        $imageName = time() .'.'.$imageUpload->getClientOriginalExtension();
+        $imagepath = public_path('/backend/media/featured_images/');
+        $imageUpload->move($imagepath,$imageName);
+        // $request->file('image')->storeAs('/backend/media/featured_images/'.$imageName);
+        News::create([
+            'headline' => $request['headline'],
+            'content' => $request['content'],
+            'image' => '/backend/media/featured_images/'.$imageName,
+            ]);
+        
+    }
+     else{
+        News::create($request->all());
+     }
+        Alert::success('Success', 'News Published successfully.');
+        return redirect()->back()
+                        ->with('success','News Published successfully.');
     }
 
     /**
@@ -46,9 +93,13 @@ class NewsController extends Controller
      * @param  \App\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function show(News $news)
+    public function show(News $post)
+    
     {
-        //
+        // $news = DB::table('news')
+        // ->where('id'.'='.$news)
+        // ->get();
+        return view('backend.news.show',compact('post'));
     }
 
     /**
@@ -59,7 +110,7 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-        //
+        return view('backend.news.edit',compact('news'));
     }
 
     /**
@@ -71,7 +122,16 @@ class NewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        //
+        $request->validate([
+            'headline' => 'required',
+            'content' => 'required',
+            
+        ]);
+        $news->update($request->all());
+        Alert::success('Success', 'News Deleted successfully.');
+        return redirect()->back();
+                        // ->with('success','Product updated successfully');
+    
     }
 
     /**
@@ -80,9 +140,14 @@ class NewsController extends Controller
      * @param  \App\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function destroy(News $news)
+    public function destroy($news)
     {
-        //
+         $delete = News::find($news);
+         $delete->delete();
+        // $news->delete();
+           Alert::success('Success', 'News Deleted successfully.');
+            return redirect()->back();
+        
     }
 
     public function what(Request $request){

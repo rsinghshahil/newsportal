@@ -87,14 +87,9 @@
                                         <a href="index.html"> <i class="fas fa-chart-bar"></i>News</a>
                                     </li>
                                     <li>
-                                        <a href="index.html"> <i class="fa fa-plus-square"></i>Add News</a>
+                                        <a href=""> <i class="fa fa-plus-square"></i>Manage News</a>
                                     </li>
-                                    <li>
-                                        <a href="add-category/create"><i class="fas fa-list"></i>Categories</a>
-                                    </li>
-                                    <li>
-                                        <a href="index3.html"><i class="fas fa-chart-bar"></i>Tags</a>
-                                    </li>
+                                    
 
                                 </ul>
                             </li>

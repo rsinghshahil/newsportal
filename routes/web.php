@@ -47,6 +47,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'backend', '
     Route::resource('/add-category','CategoryController');
     Route::resource('/all-pages','PageController');
     Route::resource('/add-news','NewsController');
+    Route::get('/add-news/delete/{id}','NewsController@destroy');
+    Route::get('/add-news/edit/{id}','NewsController@update');
+    //Route::get('/news','NewsController@index');
+    //Route::get('/news/create','NewsController@create');
+    
 });
 
 // Route::view('/home', 'home')->middleware('auth');
