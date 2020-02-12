@@ -10,9 +10,9 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Add New</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">User</a>
-                            <a class="dropdown-item" href="#">News</a>
+                            <a class="dropdown-item" href="{{route('admin.add-news.create')}}">News</a>
+                            <a class="dropdown-item" href="{{route('admin.add-category.create')}}">Category/Subcategory</a>
                             <a class="dropdown-item" href="#">Pages</a>
-                            <a class="dropdown-item" href="#">Media</a>
 
                         </div>
                     </li>

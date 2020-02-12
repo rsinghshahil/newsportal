@@ -32,7 +32,7 @@
                         <i class="fa fa-newspaper-o"></i>News</a>
                    <ul class="list-unstyled navbar__sub-list js-sub-list">
                    <li>
-                            <a href=""> <i class="fas fa-chart-bar"></i>All News</a>
+                            <a href="{{route('admin.add-news.index')}}"> <i class="fas fa-chart-bar"></i>All News</a>
                         </li>
                         <li>
                             <a href="{{route('admin.add-news.create')}}"> <i class="fa fa-plus-square"></i>Add News</a>

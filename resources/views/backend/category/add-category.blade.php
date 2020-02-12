@@ -7,10 +7,11 @@
             <div class="col-md-12" style="margin-bottom:1em">
                 <h3><u class="text-info">Manage Category & Sub-category</u></h3>
                  <button class="btn btn-md btn-success" style="float:right" data-toggle="modal" data-target="#addlargeModal"><span class="fa fa-plus"></span> Sub/Category</button>
+                 
             </div>
             <div class="col-md-12" style="border:1px solid grey;padding:5px">
                 <table class="table-hover" id="category" style="width:inherit">
-                    <thead class="dark">
+                    <thead class="table-dark">
                         <tr>
                             <th>S.N</th>
                             <th>Category</th>

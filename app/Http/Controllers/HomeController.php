@@ -26,4 +26,10 @@ class HomeController extends Controller
         return view('front.index');
 
     }
+    public function sports(){
+        return view('front.sports');
+    }
+    public function politics(){
+        return view('front.politics');
+    }
 }

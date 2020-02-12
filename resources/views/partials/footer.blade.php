@@ -11,8 +11,8 @@
 							<!-- footer about -->
 							<div class="footer-widget about-widget">
 								<div class="footer-logo">
-                                    <a href="#" class="logo"><img src="./img/logo-alt.png" alt=""></a>
-									<p>Populo tritani laboramus ex mei, no eum iuvaret ceteros euripidis, ne alia sadipscing mei. Te inciderint cotidieque pro, ei iisque docendi qui.</p>
+                                    <a href="#" class="logo"><img src="./img/logo DJ.png" alt="logo" style="height:90px;width:135px"></a>
+									<p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.</p>
 								</div>
 							</div>
 							<!-- /footer about -->

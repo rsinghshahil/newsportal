@@ -2,55 +2,53 @@
  
 @section('main-section')
     <div class="row">
-        <div class="col-lg-12 margin-tb">
+        <div class="col-md-12" style="margin-bottom:1em">
             <div class="pull-left">
-                <h2 style="margin-left:50px;">Posts</h2>
+                <h3><u class="text-info">Manage Posts</u></h3>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('admin.add-news.create') }}"  style="margin-right:50px;"> Add News</a>
+                <a class="btn btn-success" href="{{ route('admin.add-news.create') }}"><span class="fa fa-plus"></span> New Post</a>
             </div>
         </div>
     </div>
-   
-    <!--@if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif-->
-   
-    <table class="table table-hover" style="width:95%;margin: 0 auto;margin-top:2%">
-    <thead class="thead-dark">
-        <tr>
-            <th  scope="col">No</th>
-            <th  scope="col">Title</th>
-            <th  scope="col" style="height:10px">Content</th>
-            <th  scope="col">Featured_image</th>
-            <th  scope="col">Created</th>
-            <th  scope="col">Updated</th>
-            <th width="250px" scope="col">Action</th>
-        </tr>
-    </thead>
-        @foreach ($news as $post)
-        <tbody>
-        <tr>
-            <th scope="row">{{ ++$i }}</th>
-            <td>{!! str_limit($post->headline,15,'....') !!}</td>
-            <td>{!! str_limit($post->content,50,'.....') !!}</td>
-            <td> <img src="{{asset($post->image)}}" width="100px;" height="50px;"></td>
-            <td>{{$post->created_at}}</td>
-            <td>{{$post->updated_at}}</td>
-            <td>
-                    <a class="btn btn-info" href="{{ route('admin.add-news.show',$post->id) }}">Show</a>
-    
-                    <a class="btn btn-primary" href="{{ route('admin.add-news.edit',$post->id) }}">Edit</a>
-   
-                    <a class="btn btn-danger" href="{{ url('admin/add-news/delete/'.$post->id) }}">Delete</a>
-            </td>
-        </tr>
-        </tbody>
-        @endforeach
-    </table>
+    <div class="card" style="width:100%;margin: auto;margin-top: 20px;padding: 10px;">
+        <table class="table table-hover" id="newslist">
+            <thead class="thead-dark">
+                <tr>
+                    <th>No</th>
+                    <th>Title</th>
+                    <th width="250px">Content</th>
+                    <th>Featured_image</th>
+                    <th>Created</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            @foreach ($news as $post)
+            <tbody>
+            <tr>
+                <th>{{ ++$i }}</th>
+                <td>{!! str_limit($post->headline,15,'....') !!}</td>
+                <td>{!! str_limit($post->content,50,'.....') !!}</td>
+                <td> <img src="{{asset($post->image)}}" width="110px;" height="40px;"></td>
+                <td>{{$post->created_at}}</td>
+                
+                <td>
+                    <a class="btn btn-sm btn-outline-info" href="{{ url('admin/add-news/show/'.$post->id)  }}">Show</a>
+                    <a class="btn btn-sm btn-outline-primary" href="{{ url('admin/add-news/edit/'.$post->id) }}">Edit</a>
+                    <a class="btn btn-sm btn-outline-danger" href="{{ url('admin/add-news/delete/'.$post->id) }}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+            @endforeach
+        </table>
+    </div>
   
-   {!! $news->links() !!}
+   {{-- {!! $news->links() !!} --}}
       
+@endsection
+
+@section('js')
+<script>
+    $('#newslist').DataTable();
+</script>  
 @endsection

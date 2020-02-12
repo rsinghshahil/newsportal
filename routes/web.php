@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('sports','HomeController@sports')->name('sports');
+Route::get("politics",'HomeController@politics')->name('politics');
 // These are the user routes that needs NO authentications
 Route::group(['namespace' => 'front'], function () {
 
@@ -48,12 +50,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'backend', '
     Route::resource('/all-pages','PageController');
     Route::resource('/add-news','NewsController');
     Route::get('/add-news/delete/{id}','NewsController@destroy');
-    Route::get('/add-news/edit/{id}','NewsController@update');
-    //Route::get('/news','NewsController@index');
-    //Route::get('/news/create','NewsController@create');
-    
+    Route::get('/add-news/edit/{id}','NewsController@edit');
+    Route::get('/add-news/show/{id}','NewsController@show');
+    // Route::get('/add-news/update/{id}','NewsController@update');
+  
 });
-
-// Route::view('/home', 'home')->middleware('auth');
 
 

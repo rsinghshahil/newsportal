@@ -8,6 +8,8 @@ use App\News;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use DB;
+use File;
+use Illuminate\Support\Facades\Storage;
 use App\Photo;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -27,18 +29,12 @@ class NewsController extends Controller
     {
         //$news = News::latest()->paginate(5);
         $news = DB::table('news')
-        ->orderBy('id', 'desc')
-        ->paginate(5);
-        // ->take(5)
-        // ->with([
-        //     'content' => function($query) {
-        //         $query->select(DB::raw('LEFT (text, 50)'));
-        //     }, 
-        //      ])
-        // ->get();
+                ->select('*',DB::raw('date(created_at) as created_at'))
+                ->orderBy('id', 'desc')
+                ->paginate(5);
+                // DD($news);
         return view('backend.news.index',compact('news'))
-        // ->with('i','0');
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', 0);
     }
 
     /**
@@ -62,21 +58,18 @@ class NewsController extends Controller
         $request->validate([
             'headline' => 'required',
             'content' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         if($request->has('image')){
         $imageUpload = $request->file('image');
         $imageName = time() .'.'.$imageUpload->getClientOriginalExtension();
         $imagepath = public_path('/backend/media/featured_images/');
         $imageUpload->move($imagepath,$imageName);
-        // $request->file('image')->storeAs('/backend/media/featured_images/'.$imageName);
         News::create([
             'headline' => $request['headline'],
             'content' => $request['content'],
             'image' => '/backend/media/featured_images/'.$imageName,
             ]);
-        
     }
      else{
         News::create($request->all());
@@ -93,14 +86,13 @@ class NewsController extends Controller
      * @param  \App\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function show(News $post)
+    public function show($news)
     
     {
-        // $news = DB::table('news')
-        // ->where('id'.'='.$news)
-        // ->get();
+        $post = News::find($news);
+         
         return view('backend.news.show',compact('post'));
-    }
+   }
 
     /**
      * Show the form for editing the specified resource.
@@ -108,9 +100,11 @@ class NewsController extends Controller
      * @param  \App\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function edit(News $news)
+    public function edit($news)
     {
-        return view('backend.news.edit',compact('news'));
+        $post = News::find($news);
+         
+         return view('backend.news.edit',compact('post'));
     }
 
     /**
@@ -120,18 +114,34 @@ class NewsController extends Controller
      * @param  \App\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, News $news)
+    public function update(Request $request, $id)
     {
+        // dd($request->all(),$id);
         $request->validate([
             'headline' => 'required',
             'content' => 'required',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             
         ]);
-        $news->update($request->all());
-        Alert::success('Success', 'News Deleted successfully.');
-        return redirect()->back();
-                        // ->with('success','Product updated successfully');
-    
+        $update = News::find($request->news_id);
+        $update->headline = $request->headline;
+        $update->content = $request->content;
+        
+        if($request->has('image')){
+            $imageUpload = $request->file('image');
+            $imageName = time() .'.'.$imageUpload->getClientOriginalExtension();
+            $imagepath = public_path('/backend/media/featured_images/');
+            $imageUpload->move($imagepath,$imageName);
+            // dd($imageUpload,$imageName);
+            $update->image = '/backend/media/featured_images/'.$imageName;
+            $update->save();
+        }else{
+
+        $update->save();
+     }
+        Alert::success('Success', 'News updated successfully.');
+        return redirect()->route('admin.add-news.index')
+                        ->with('success','News Published successfully.');
     }
 
     /**
@@ -142,12 +152,16 @@ class NewsController extends Controller
      */
     public function destroy($news)
     {
-         $delete = News::find($news);
-         $delete->delete();
-        // $news->delete();
-           Alert::success('Success', 'News Deleted successfully.');
-            return redirect()->back();
-        
+        $delete = News::find($news);
+        $image_path = $delete->image;
+        // dd($image_path);
+        if(File::exists($image_path)) {
+            Storage::delete($image_path);
+        }
+        $delete->delete();
+        Alert::success('Success', 'News Deleted successfully.');
+        return redirect()->back();
+    
     }
 
     public function what(Request $request){
