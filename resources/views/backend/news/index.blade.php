@@ -11,13 +11,14 @@
             </div>
         </div>
     </div>
-    <div class="card" style="width:100%;margin: auto;margin-top: 20px;padding: 10px;">
-        <table class="table table-hover" id="newslist">
+    <div class="card" style="border:1px solid grey;padding:5px; font-size:12px">
+        <table class="table table-hover" id="dtMaterialDesignExample">
             <thead class="thead-dark">
                 <tr>
                     <th>No</th>
                     <th>Title</th>
                     <th width="250px">Content</th>
+                    <th>Category</th>
                     <th>Featured_image</th>
                     <th>Created</th>
                     <th>Action</th>
@@ -29,6 +30,7 @@
                 <th>{{ ++$i }}</th>
                 <td>{!! str_limit($post->headline,15,'....') !!}</td>
                 <td>{!! str_limit($post->content,50,'.....') !!}</td>
+                <td>-------</td>
                 <td> <img src="{{asset($post->image)}}" width="110px;" height="40px;"></td>
                 <td>{{$post->created_at}}</td>
                 
@@ -49,6 +51,26 @@
 
 @section('js')
 <script>
-    $('#newslist').DataTable();
-</script>  
+    //$('#newslist').DataTable();
+    //$('.dataTables_length').addClass('bs-select');
+    $(document).ready(function () {
+  $('#dtMaterialDesignExample').DataTable();
+  $('#dtMaterialDesignExample_wrapper').find('label').each(function () {
+    $(this).parent().append($(this).children());
+  });
+  $('#dtMaterialDesignExample_wrapper .dataTables_filter').find('input').each(function () {
+    const $this = $(this);
+    $this.attr("placeholder", "Search");
+    $this.removeClass('form-control-sm');
+  });
+  $('#dtMaterialDesignExample_wrapper .dataTables_length').addClass('d-flex flex-row');
+  $('#dtMaterialDesignExample_wrapper .dataTables_filter').addClass('md-form');
+  $('#dtMaterialDesignExample_wrapper select').removeClass(
+  'custom-select custom-select-sm form-control form-control-sm');
+  $('#dtMaterialDesignExample_wrapper select').addClass('mdb-select');
+  $('#dtMaterialDesignExample_wrapper .mdb-select').materialSelect();
+  $('#dtMaterialDesignExample_wrapper .dataTables_filter').find('label').remove();
+});
+</script> 
+ 
 @endsection

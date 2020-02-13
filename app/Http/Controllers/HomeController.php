@@ -3,6 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use App\Http\Controllers\Controller;
+use App\News;
+use App\Category;
+use DB;
+use File;
+use App\Photo;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Model;
+
+
 
 class HomeController extends Controller
 {
@@ -27,9 +39,22 @@ class HomeController extends Controller
 
     }
     public function sports(){
-        return view('front.sports');
+        $news = DB::table('news')
+                ->select('*',DB::raw('date(created_at) as created_at'))
+                ->orderBy('id', 'desc')
+                ->paginate(10);
+                // DD($news);
+        return view('front.pages.sports',compact('news','news'))
+            ->with('i', 0);
+        
     }
     public function politics(){
-        return view('front.politics');
+        return view('front.pages.politics');
+    }
+    public function contact(){
+        return view('front.contact');
+    }
+    public function about(){
+        return view('front.about');
     }
 }

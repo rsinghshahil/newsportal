@@ -10,7 +10,7 @@
                  
             </div>
             <div class="col-md-12" style="border:1px solid grey;padding:5px">
-                <table class="table-hover" id="category" style="width:inherit">
+                <table class="table table-hover" id="category" style="width:inherit">
                     <thead class="table-dark">
                         <tr>
                             <th>S.N</th>

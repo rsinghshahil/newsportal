@@ -22,6 +22,8 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('sports','HomeController@sports')->name('sports');
 Route::get("politics",'HomeController@politics')->name('politics');
+Route::get("contact",'HomeController@contact')->name('contact');
+Route::get('about','HomeController@about')->name('about');
 // These are the user routes that needs NO authentications
 Route::group(['namespace' => 'front'], function () {
 

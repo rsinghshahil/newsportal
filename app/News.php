@@ -18,6 +18,6 @@ class News extends Model
         ];
     }
     protected $fillable = [
-        'headline', 'content','image'
+        'headline', 'content','image','category_id'
     ];
 }

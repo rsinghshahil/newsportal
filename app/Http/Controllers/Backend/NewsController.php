@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\News;
+use App\Category;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use DB;
@@ -31,9 +32,9 @@ class NewsController extends Controller
         $news = DB::table('news')
                 ->select('*',DB::raw('date(created_at) as created_at'))
                 ->orderBy('id', 'desc')
-                ->paginate(5);
+                ->paginate(10);
                 // DD($news);
-        return view('backend.news.index',compact('news'))
+        return view('backend.news.index',compact('news','categories'))
             ->with('i', 0);
     }
 
@@ -44,7 +45,9 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return view('backend.news.add-news');
+        $categories = Category::with('subcategories')->where('parent_id','=',0)->get();
+        return view('backend.news.add-news')->with(compact('categories'));
+        // return view('backend.news.add-news');
     }
 
     /**
@@ -58,6 +61,7 @@ class NewsController extends Controller
         $request->validate([
             'headline' => 'required',
             'content' => 'required',
+            'category_id' => 'required',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         if($request->has('image')){
@@ -68,6 +72,7 @@ class NewsController extends Controller
         News::create([
             'headline' => $request['headline'],
             'content' => $request['content'],
+            'category_id' => $request['category_id'],
             'image' => '/backend/media/featured_images/'.$imageName,
             ]);
     }
@@ -90,8 +95,9 @@ class NewsController extends Controller
     
     {
         $post = News::find($news);
+        $categories = Category::find($post->category_id);
          
-        return view('backend.news.show',compact('post'));
+        return view('backend.news.show',compact('post','categories'));
    }
 
     /**
@@ -103,8 +109,8 @@ class NewsController extends Controller
     public function edit($news)
     {
         $post = News::find($news);
-         
-         return view('backend.news.edit',compact('post'));
+        $categories = Category::with('subcategories')->where('parent_id','=',0)->get(); 
+        return view('backend.news.edit',compact('post','categories'));
     }
 
     /**
@@ -120,12 +126,14 @@ class NewsController extends Controller
         $request->validate([
             'headline' => 'required',
             'content' => 'required',
+            'category_id' => 'required',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             
         ]);
         $update = News::find($request->news_id);
         $update->headline = $request->headline;
         $update->content = $request->content;
+        $update->category_id = $request->category_id;
         
         if($request->has('image')){
             $imageUpload = $request->file('image');

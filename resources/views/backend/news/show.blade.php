@@ -16,6 +16,7 @@
   <img class="card-img-top" src="{{asset($post->image)}}" alt="Featured image" style="height: 350px;">
   <div class="card-body">
     <h5 class="card-title">{{ $post->headline}}</h5>
+    <h5 class="card-title">{{ $categories->name}}</h5>
     <p class="card-text">{!!$post->content !!}</p>
   </div>
 </div>

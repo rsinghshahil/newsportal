@@ -32,12 +32,15 @@
                                 <div class="form-group">
                                     <label for="category_id" class=" form-control-label">Category</label>
                                     <select name="category_id" id="category_id" class="form-control">
-                                        <optgroup label="Web">
-                                            <option value="php">PHP</option>
-                                            <option value="CSS">CSS</option>
-                                            <option value="HTMl">HTML</option>
-                                            <option value="Javascript">JavaScript</option>
-                                        </optgroup>
+                                        @foreach ($categories as $items)
+                                            <option value="{{$items->id}}" style="font-weight:bold">{{$items->name}}</option>
+                                            @foreach($items->subcategories as $item)
+                                                @if ($item != null)
+                                                <option value="{{$item->id}}" style="font-weight:300">{{$item->name}}</option>
+                                                <option style="font-size: 1pt; background-color: #a9b3c9;" disabled>&nbsp;</option>
+                                                @endif
+                                            @endforeach
+                                        @endforeach
                                     </select>
                                 </div><br>
                                 <div class="form-group">
