@@ -8,16 +8,13 @@
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
-                <li class="active has-sub">
-                    <a class="js-arrow" href="index.html">
-                        <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                 
+                <li class="has-sub">
+                    <a class="js-arrow" href="index.html"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
                 </li>
                  <li class="has-sub">
                     <a class="js-arrow" href="#">
                         <i class="fa fa-users"></i>Users</a>
                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                   
                         <li>
                             <a href="index.html"> <i class="fa fa-user-plus"></i>Add New</a>
                         </li>
@@ -28,17 +25,18 @@
                     </ul>
                 </li>
                 <li class="has-sub">
+                    <a class="js-arrow" href="{{route('admin.add-category.create')}}"><i class="fa fa-list-alt"></i>Category/Subcategory</a>
+                </li>
+                <li class="has-sub">
                     <a class="js-arrow" href="#">
                         <i class="fa fa-newspaper-o"></i>News</a>
                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                   <li>
+                        <li>
                             <a href="{{route('admin.add-news.index')}}"> <i class="fas fa-chart-bar"></i>All News</a>
                         </li>
                         <li>
                             <a href="{{route('admin.add-news.create')}}"> <i class="fa fa-plus-square"></i>Add News</a>
                         </li>
-                        
-
                     </ul>
                 </li>
                 <li class="has-sub">

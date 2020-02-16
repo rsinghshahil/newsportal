@@ -35,7 +35,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('front.index');
+        $headerNews = News::orderBy('id', 'desc')->take(2)->get();
+        return view('front.index',compact('headerNews'));
 
     }
     public function sports(){
@@ -44,7 +45,7 @@ class HomeController extends Controller
                 ->orderBy('id', 'desc')
                 ->paginate(10);
                 // DD($news);
-        return view('front.pages.sports',compact('news','news'))
+        return view('front.pages.sports',compact('news'))
             ->with('i', 0);
         
     }
@@ -56,5 +57,9 @@ class HomeController extends Controller
     }
     public function about(){
         return view('front.about');
+    }
+    public function getHeaderNews(){
+        $news = News::orderBy('id', 'desc')->take(2)->get();
+        return view('partials.header-banners',compact('news'));
     }
 }
