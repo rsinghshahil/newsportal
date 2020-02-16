@@ -35,22 +35,75 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $headerNews = News::orderBy('id', 'desc')->take(2)->get();
+        $headerNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))
+        ->take(2)->get();
+    
         return view('front.index',compact('headerNews'));
 
     }
     public function sports(){
-        $news = DB::table('news')
-                ->select('*',DB::raw('date(created_at) as created_at'))
-                ->orderBy('id', 'desc')
-                ->paginate(10);
-                // DD($news);
-        return view('front.pages.sports',compact('news'))
-            ->with('i', 0);
+        $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))
+        ->take(4)->get();
+        // dd($lNews[3]->id);
+        $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->limit(6)->get();
+        return view('front.pages.sports',compact('lNews','sNews'));
         
     }
     public function politics(){
-        return view('front.pages.politics');
+        $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))
+        ->take(4)->get();
+        // dd($lNews[3]->id);
+        $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->limit(6)->get();
+        return view('front.pages.politics',compact('lNews','sNews'));
+    }
+    public function lifestyle(){
+        $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))
+        ->take(4)->get();
+        // dd($lNews[3]->id);
+        $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->limit(6)->get();
+        return view('front.pages.lifestyle',compact('lNews','sNews'));
+    }
+    public function technology(){
+        $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))
+        ->take(4)->get();
+        // dd($lNews[3]->id);
+        $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->limit(6)->get();
+        return view('front.pages.technology',compact('lNews','sNews'));
+    }
+    public function international(){
+        $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))
+        ->take(4)->get();
+        // dd($lNews[3]->id);
+        $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->limit(6)->get();
+        return view('front.pages.international',compact('lNews','sNews'));
+    }
+    public function entertainment(){
+        $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))
+        ->take(4)->get();
+        // dd($lNews[3]->id);
+        $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->limit(6)->get();
+        return view('front.pages.entertainment',compact('lNews','sNews'));
+    }
+    public function blog(){
+        $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))
+        ->take(4)->get();
+        // dd($lNews[3]->id);
+        $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->limit(6)->get();
+        return view('front.pages.blog',compact('lNews','sNews'));
+    }
+    public function health(){
+        $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))
+        ->take(4)->get();
+        // dd($lNews[3]->id);
+        $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->limit(6)->get();
+        return view('front.pages.health',compact('lNews','sNews'));
+    }
+    public function business(){
+        $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))
+        ->take(4)->get();
+        // dd($lNews[3]->id);
+        $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->limit(6)->get();
+        return view('front.pages.business',compact('lNews','sNews'));
     }
     public function contact(){
         return view('front.contact');

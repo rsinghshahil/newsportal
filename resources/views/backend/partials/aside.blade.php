@@ -40,6 +40,9 @@
                     </ul>
                 </li>
                 <li class="has-sub">
+                    <a class="js-arrow" href=""><i class="fab fa-blogger-b"></i></i>Blogs</a>
+                </li>
+                <li class="has-sub">
                     <a class="js-arrow" href="#">
                     <i class="fas fa-file-alt"></i>Pages</a>
                    <ul class="list-unstyled navbar__sub-list js-sub-list">

@@ -20,9 +20,18 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
+//pages route
 Route::get('sports','HomeController@sports')->name('sports');
-Route::get("politics",'HomeController@politics')->name('politics');
-Route::get("contact",'HomeController@contact')->name('contact');
+Route::get('politics','HomeController@politics')->name('politics');
+Route::get('entertainment','HomeController@entertainment')->name('entertainment');
+Route::get('international','HomeController@international')->name('international');
+Route::get('technology','HomeController@technology')->name('technology');
+Route::get('lifestyle', 'HomeController@lifestyle')->name('lifestyle');
+Route::get('interview','Homecontroller@interview')->name('interview');
+Route::get('blog','Homecontroller@blog')->name('blog');
+Route::get('business','Homecontroller@business')->name('business');
+Route::get('health','Homecontroller@health')->name('health');
+Route::get('contact','HomeController@contact')->name('contact');
 Route::get('about','HomeController@about')->name('about');
 // These are the user routes that needs NO authentications
 Route::group(['namespace' => 'front'], function () {
