@@ -14,11 +14,14 @@
 							<!-- tab nav -->
 							<ul class="tab-nav pull-right">
 								<li class="active"><a data-toggle="tab" href="#tab1">All</a></li>
-								<li><a data-toggle="tab" href="#tab1">News</a></li>
-								<li><a data-toggle="tab" href="#tab1">Sport</a></li>
-								<li><a data-toggle="tab" href="#tab1">Music</a></li>
-								<li><a data-toggle="tab" href="#tab1">Business</a></li>
-								<li><a data-toggle="tab" href="#tab1">Lifestyle</a></li>
+								<li><a data-toggle="tab" href="">News</a></li>
+								<li><a data-toggle="tab" href="{{ route('sports')}}">Sport</a></li>
+								<li><a data-toggle="tab" href="{{ route('politics')}}">Music</a></li>
+								<li><a data-toggle="tab" href="{{ route('contact')}}">Business</a></li>
+                                <li><a data-toggle="tab" href="{{ route('politics')}}">Politics</a></li>
+								<li><a data-toggle="tab" href="{{ route('contact')}}">Contact</a></li>
+								<li><a data-toggle="tab" href="{{ route('about')}}">About</a></li>
+
 							</ul>
 							<!-- /tab nav -->
 						</div>

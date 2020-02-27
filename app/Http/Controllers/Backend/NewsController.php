@@ -92,11 +92,11 @@ class NewsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($news)
-    
+
     {
         $post = News::find($news);
         $categories = Category::find($post->category_id);
-         
+
         return view('backend.news.show',compact('post','categories'));
    }
 
@@ -109,7 +109,7 @@ class NewsController extends Controller
     public function edit($news)
     {
         $post = News::find($news);
-        $categories = Category::with('subcategories')->where('parent_id','=',0)->get(); 
+        $categories = Category::with('subcategories')->where('parent_id','=',0)->get();
         return view('backend.news.edit',compact('post','categories'));
     }
 
@@ -128,13 +128,13 @@ class NewsController extends Controller
             'content' => 'required',
             'category_id' => 'required',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            
+
         ]);
         $update = News::find($request->news_id);
         $update->headline = $request->headline;
         $update->content = $request->content;
         $update->category_id = $request->category_id;
-        
+
         if($request->has('image')){
             $imageUpload = $request->file('image');
             $imageName = time() .'.'.$imageUpload->getClientOriginalExtension();
@@ -169,7 +169,7 @@ class NewsController extends Controller
         $delete->delete();
         Alert::success('Success', 'News Deleted successfully.');
         return redirect()->back();
-    
+
     }
 
     public function what(Request $request){
