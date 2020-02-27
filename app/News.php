@@ -8,16 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class News extends Model
 {
     use sluggable;
-
+    protected $fillable = [
+        'headline', 'content','image','category','url',
+    ];
     public function sluggable()
     {
         return [
-            'slug' => [
-                'source' => 'name'
+            'url' => [
+                'source' => 'headline'
             ]
         ];
     }
-    protected $fillable = [
-        'headline', 'content','image','category_id'
-    ];
+    // protected $fillable = [
+    //     'headline', 'content','image','category'
+    // ];
 }

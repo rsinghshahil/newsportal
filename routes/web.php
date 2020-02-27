@@ -16,6 +16,8 @@
 // });
 
 //use Illuminate\Routing\Route;
+
+use App\Http\Controllers\Backend\BlogController;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
@@ -57,12 +59,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'backend', '
     Route::get('/dashboard','DashboardController@index')->name('index');
     // Route::view('/admin', 'admin')->middleware('auth:admin');
     // Route::view('/dash', 'backend.index');
-    Route::resource('/add-category','CategoryController');
+    Route::resource('/category','CategoryController');
     Route::resource('/all-pages','PageController');
-    Route::resource('/add-news','NewsController');
-    Route::get('/add-news/delete/{id}','NewsController@destroy');
-    Route::get('/add-news/edit/{id}','NewsController@edit');
-    Route::get('/add-news/show/{id}','NewsController@show');
+    Route::resource('/blogs','BlogController');
+    Route::resource('/news','NewsController');
+    Route::get('/news/delete/{id}','NewsController@destroy');
+    Route::get('/news/edit/{id}','NewsController@edit');
+    Route::get('/news/show/{id}','NewsController@show');
     // Route::get('/add-news/update/{id}','NewsController@update');
   
 });

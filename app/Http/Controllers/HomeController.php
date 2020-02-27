@@ -35,10 +35,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $headerNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))
-        ->take(2)->get();
-    
-        return view('front.index',compact('headerNews'));
+        $news = News::orderBy('id', 'desc')->take(2)->get();
+        // dd($news);
+        return view('front.index');
 
     }
     public function sports(){
@@ -112,6 +111,7 @@ class HomeController extends Controller
         return view('front.about');
     }
     public function getHeaderNews(){
+
         $news = News::orderBy('id', 'desc')->take(2)->get();
         return view('partials.header-banners',compact('news'));
     }
