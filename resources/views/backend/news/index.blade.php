@@ -7,11 +7,11 @@
                 <h3><u class="text-info">Manage Posts</u></h3>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('admin.add-news.create') }}"><span class="fa fa-plus"></span> New Post</a>
+                <a class="au-btn au-btn-icon au-btn--blue" href="{{ route('admin.news.create') }}"><i class="zmdi zmdi-plus"></i></span> New Post</a>
             </div>
         </div>
     </div>
-    <div class="card" style="border:1px solid grey;padding:5px; font-size:12px">
+    <div class="card" style="border:1px solid grey;padding:5px; font-size:16px">
         <table class="table table-hover" id="dtMaterialDesignExample">
             <thead class="thead-dark">
                 <tr>
@@ -28,16 +28,16 @@
             @foreach ($news as $post)
             <tr>
                 <th>{{ ++$i }}</th>
-                <td>{!! \Illuminate\Support\Str::limit($post->headline,15,'....') !!}</td>
-                <td>{!! \Illuminate\Support\Str::limit($post->content,50,'....') !!}</td>
-                <td>- - - - - - -</td>
-                <td> <img src="{{asset($post->image)}}" alt="image" width="110px;" height="40px;"></td>
+                <td  data-toggle="tooltip" data-placement="right" title="{!! ($post->headline) !!}">{!! str_limit($post->headline,10,'....') !!}</td>
+                <td>{!! str_limit($post->content,30,'.....') !!}</td>
+                <td>{{$post->category}}</td>
+                <td> <img src="{{asset($post->image)}}" width="110px;" height="40px;"></td>
                 <td>{{$post->created_at}}</td>
 
                 <td>
-                    <a class="btn btn-sm btn-outline-info" href="{{ url('admin/add-news/show/'.$post->id)  }}">Show</a>
-                    <a class="btn btn-sm btn-outline-primary" href="{{ url('admin/add-news/edit/'.$post->id) }}">Edit</a>
-                    <a class="btn btn-sm btn-outline-danger" href="{{ url('admin/add-news/delete/'.$post->id) }}">Delete</a>
+                    <a  href="{{ url('admin/news/show/'.$post->id)  }}"  data-toggle="tooltip" data-placement="bottom" title="View"><i class="fas fa-eye"></i></a>
+                    <a href="{{ url('admin/news/edit/'.$post->id) }}"  data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit" style="color: #29b6f6;"></i></a>
+                    <a href="{{ url('admin/news/delete/'.$post->id) }}"  data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash"  style="color: #f05050"></i></a>
                 </td>
             </tr>
             @endforeach

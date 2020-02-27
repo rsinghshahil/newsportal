@@ -12,7 +12,7 @@
                                 <h3 class="text-center title-2">News Details</h3>
                             </div>
                             <hr>
-                            <form action="{{route('admin.add-news.update','update')}}" method="POST"  enctype="multipart/form-data">
+                            <form action="{{route('admin.news.update','update')}}" method="POST"  enctype="multipart/form-data">
                             @csrf            
                             {{ method_field('PATCH') }}
                                 <input type='hidden' value='{{ $post->id}}' name="news_id">
@@ -32,13 +32,14 @@
                                     </label>
                                 </div><br>
                                 <div class="form-group">
-                                    <label for="category_id" class=" form-control-label">Category</label>
-                                    <select name="category_id" id="category_id" class="form-control">
+                                    <label for="category" class=" form-control-label">Category</label>
+                                    <select name="category" id="category" class="form-control">
+                                        <option>{{ $post->category}}</option>
                                         @foreach ($categories as $items)
-                                            <option value="{{$items->id}}" style="font-weight:bold">{{$items->name}}</option>
+                                            <option value="{{$items->name}}" style="font-weight:bold">{{$items->name}}</option>
                                             @foreach($items->subcategories as $item)
                                                 @if ($item != null)
-                                                <option value="{{$item->id}}" style="font-weight:300">{{$item->name}}</option>
+                                                <option value="{{$item->name}}" style="font-weight:300">{{$item->name}}</option>
                                                 <option style="font-size: 1pt; background-color: #a9b3c9;" disabled>&nbsp;</option>
                                                 @endif
                                             @endforeach

@@ -8,16 +8,13 @@
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
-                <li class="active has-sub">
-                    <a class="js-arrow" href="index.html">
-                        <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                 
+                <li class="has-sub">
+                    <a class="js-arrow" href="index.html"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
                 </li>
                  <li class="has-sub">
                     <a class="js-arrow" href="#">
                         <i class="fa fa-users"></i>Users</a>
                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                   
                         <li>
                             <a href="index.html"> <i class="fa fa-user-plus"></i>Add New</a>
                         </li>
@@ -28,17 +25,36 @@
                     </ul>
                 </li>
                 <li class="has-sub">
+                    <a class="js-arrow" href="{{route('admin.category.index')}}"><i class="fa fa-list-alt"></i>Category/Subcategory</a>
+                </li>
+                <li class="has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="fa fa-newspaper-o"></i>News</a>
+                        <i class="fa fa-newspaper-o"></i>News  <span class="menu-arrow"></span></a>
                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                   <li>
-                            <a href="{{route('admin.add-news.index')}}"> <i class="fas fa-chart-bar"></i>All News</a>
+                        <li>
+                            <a href="{{route('admin.news.index')}}"> <i class="fas fa-chart-bar"></i>Manage News</a>
                         </li>
                         <li>
-                            <a href="{{route('admin.add-news.create')}}"> <i class="fa fa-plus-square"></i>Add News</a>
+                            <a href="{{route('admin.news.create')}}"> <i class="fa fa-plus-square"></i>Add News</a>
                         </li>
-                        
-
+                        <li>
+                            <a href="{{route('admin.news.create')}}"> <i class="fa fa-plus-square"></i>Trash News</a>
+                        </li>
+                    </ul>
+                    
+                </li>
+                <li class="has-sub">
+                    <a class="js-arrow" href="#"><i class="fab fa-blogger-b"></i></i>Blogs</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li>
+                            <a href="{{route('admin.blogs.index')}}"> <i class="fas fa-chart-bar"></i>Manage Blogs</a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.blogs.create')}}"> <i class="fa fa-plus-square"></i>Add Blogs</a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.blogs.create')}}"> <i class="fa fa-plus-square"></i>Trash Blogs</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="has-sub">

@@ -36,7 +36,7 @@
                                                 data-description="{{$items->description}}">
                                                 Edit
                                             </button>
-                                        <a class="btn btn-sm btn-danger delete-btn" href="javascript:void(0)" data-method="DELETE" url="{{route('admin.add-category.destroy',$items->id)}}" id="{{$items->id}}">Delete</a>
+                                        <a class="btn btn-sm btn-danger delete-btn" href="javascript:void(0)" data-method="DELETE" url="{{route('admin.category.destroy',$items->id)}}" id="{{$items->id}}">Delete</a>
                                     </td>
                                         @foreach ($items->subcategories as $k => $item)
                                             <tr id="parent-{{ $item->id }}">
@@ -50,7 +50,7 @@
                                                         data-subcategory="{{$item->name}}"
                                                         data-description="{{$item->description}}">
                                                         Edit</button>
-                                                    <a class="btn btn-sm btn-danger delete-btn" href="javascript:void(0)" data-method="DELETE" url="{{route('admin.add-category.destroy',$item->id)}}" id="{{$item->id}}">Delete</a>
+                                                    <a class="btn btn-sm btn-danger delete-btn" href="javascript:void(0)" data-method="DELETE" url="{{route('admin.category.destroy',$item->id)}}" id="{{$item->id}}">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -65,7 +65,7 @@
                                                 data-description="{{$items->description}}">
                                                 Edit
                                             </button>
-                                            <a class="btn btn-sm btn-danger delete-btn" href="javascript:void(0)" data-method="DELETE" url="{{route('admin.add-category.destroy',$items->id)}}" id="{{$items->id}}">Delete</a>
+                                            <a class="btn btn-sm btn-danger delete-btn" href="javascript:void(0)" data-method="DELETE" url="{{route('admin.category.destroy',$items->id)}}" id="{{$items->id}}">Delete</a>
                                                 {{-- <a class="btn btn-sm btn-danger" id="{{$items->id}}" url="{{route('admin.add-category.destroy',$items->id)}}" data-method="DELETE" class="delete-btn">Delete</a> --}}
                                             </form>
                                         </td>
@@ -96,7 +96,7 @@
                                         <strong>Add Category & SubCategory</strong>
                                     </div> --}}
                                     <div class="card-body card-block">
-                                        <form action="{{route('admin.add-category.store')}}" method="post">
+                                        <form action="{{route('admin.category.store')}}" method="post">
                                             @csrf
                                             <div class="form-group">
                                                 <div class="">
@@ -167,7 +167,7 @@
                                         <strong>Add Category & SubCategory</strong>
                                     </div> --}}
                                     <div class="card-body card-block">
-                                        <form action="{{route('admin.add-category.update','update')}}" method="post">
+                                        <form action="{{route('admin.category.update','update')}}" method="post">
                                             @csrf
                                             {{ method_field('PATCH') }}
                                             <input type="hidden" id="category_id" name="category_id" value="">
@@ -218,7 +218,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Confirm</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </form>
                 </div>

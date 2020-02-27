@@ -49,14 +49,15 @@
                 </div>
                 <ul class="main-nav nav navbar-nav">
                     <li class="active"><a href="{{route('home')}}"><i class="fa fa-home" style="font-size:24px"></i></a></li>
-                    <li><a href="{{route('politics')}}">Politic</a></li>
+                    <li><a href="{{route('politics')}}">Politics</a></li>
                     <li><a href="{{route('sports')}}">Sport</a></li>
-                    <li><a href="#">Lifestyle</a></li>
-                    <li><a href="#">Interview</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Business</a></li>
-                    <li><a href="#">International</a></li>
-                    <li><a href="#">Health</a></li>
+                    <li><a href="{{route('lifestyle')}}">Lifestyle</a></li>
+                    <li><a href="{{route('interview')}}">Interview</a></li>
+                    <li><a href="{{route('blog')}}">Blog</a></li>
+                    <li><a href="{{route('business')}}">Business</a></li>
+                    <li><a href="{{route('international')}}">International</a></li>
+                    <li><a href="{{route('health')}}">Health</a></li>
+                    <li><a href="{{route('entertainment')}}">Entertainment</a></li>
                 </ul>
             </nav>
             <div class="button-nav">

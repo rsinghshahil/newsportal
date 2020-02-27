@@ -38,6 +38,11 @@
     <link href="{{asset('backend/css/theme.css')}}" rel="stylesheet" media="all">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <link type="text/css" rel="stylesheet" href="{{asset('backend/css/custom.css')}}"/>
+    <!--summernote-->
+    <link href="{{asset('backend/plugins/summernote/summernote.css')}}" rel="stylesheet" />
+    <link href="{{asset('backend/plugins/jquery.filer/css/jquery.filer.css')}}" rel="stylesheet" />
+    <link href="{{asset('backend/plugins/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css')}}" rel="stylesheet" />
+    
 </head>
 
 <body class="animsition">

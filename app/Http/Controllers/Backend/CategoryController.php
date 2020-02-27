@@ -19,6 +19,8 @@ class CategoryController extends Controller
     {
         //dd('sdfg');
         //return view('backend.category.add-category');
+        $categories = Category::with('subcategories')->where('parent_id','=',0)->get();
+        return view('backend.category.index')->with(compact('categories'));
     }
 
     /**
@@ -28,8 +30,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::with('subcategories')->where('parent_id','=',0)->get();
-        return view('backend.category.add-category')->with(compact('categories'));
+        
     }
 
     /**
@@ -119,7 +120,7 @@ class CategoryController extends Controller
                     $update->parent_id = $request->pcategory_id;
                 }
                 $update->save();
-                Alert::success('Success', 'Category Saved!');
+                Alert::success('Success', 'Category Updated!');
             }
 
             if ($request->sub_category_id > 0 && $request->category_id == 0 ){
@@ -128,7 +129,7 @@ class CategoryController extends Controller
                 $update->description = $request->description;
                 $update->parent_id = $request->pcategory_id;
                 $update->save();
-                Alert::success('Success', 'Subcategory Saved!');
+                Alert::success('Success', 'Subcategory updated!');
             }
 
         return redirect()->back();

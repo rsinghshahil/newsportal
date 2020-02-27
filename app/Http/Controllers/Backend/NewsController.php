@@ -15,6 +15,7 @@ use App\Photo;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 
 //use Illuminate\Pagination\LengthAwarePaginator;
@@ -46,7 +47,7 @@ class NewsController extends Controller
     public function create()
     {
         $categories = Category::with('subcategories')->where('parent_id','=',0)->get();
-        return view('backend.news.add-news')->with(compact('categories'));
+        return view('backend.news.create')->with(compact('categories'));
         // return view('backend.news.add-news');
     }
 
@@ -61,8 +62,9 @@ class NewsController extends Controller
         $request->validate([
             'headline' => 'required',
             'content' => 'required',
-            'category_id' => 'required',
+            'category' => 'required',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // 'url' => SlugService::createSlug(News::class, 'url', $request->headline),
         ]);
         if($request->has('image')){
         $imageUpload = $request->file('image');
@@ -72,7 +74,8 @@ class NewsController extends Controller
         News::create([
             'headline' => $request['headline'],
             'content' => $request['content'],
-            'category_id' => $request['category_id'],
+            'category' => $request['category'],
+            // 'url' => SlugService::createSlug(News::class, 'url', $request->headline),
             'image' => '/backend/media/featured_images/'.$imageName,
             ]);
     }
@@ -95,9 +98,8 @@ class NewsController extends Controller
 
     {
         $post = News::find($news);
-        $categories = Category::find($post->category_id);
 
-        return view('backend.news.show',compact('post','categories'));
+        return view('backend.news.show',compact('post'));
    }
 
     /**
@@ -126,15 +128,26 @@ class NewsController extends Controller
         $request->validate([
             'headline' => 'required',
             'content' => 'required',
-            'category_id' => 'required',
+            'category' => 'required',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+<<<<<<< HEAD
 
+=======
+
+
+>>>>>>> af2eb8497a1480b1c28dbcd88566842fe2312687
         ]);
         $update = News::find($request->news_id);
         $update->headline = $request->headline;
         $update->content = $request->content;
+<<<<<<< HEAD
         $update->category_id = $request->category_id;
 
+=======
+        $update->category = $request->category;
+        $update->url = SlugService::createSlug(News::class, 'url', $request->headline);
+
+>>>>>>> af2eb8497a1480b1c28dbcd88566842fe2312687
         if($request->has('image')){
             $imageUpload = $request->file('image');
             $imageName = time() .'.'.$imageUpload->getClientOriginalExtension();
@@ -148,7 +161,7 @@ class NewsController extends Controller
         $update->save();
      }
         Alert::success('Success', 'News updated successfully.');
-        return redirect()->route('admin.add-news.index')
+        return redirect()->route('admin.news.index')
                         ->with('success','News Published successfully.');
     }
 
