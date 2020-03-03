@@ -145,10 +145,15 @@ class NewsController extends Controller
 
         if($request->has('image')){
             $imageUpload = $request->file('image');
+
+            //if the request has a new file, deleting the previous image for the new image.
+            if (File::exists(public_path($orginalImage))) {
+                File::delete(public_path($orginalImage));
+            }
+
             $imageName = time() .'.'.$imageUpload->getClientOriginalExtension();
             $imagepath = public_path('/backend/media/featured_images/');
             $imageUpload->move($imagepath,$imageName);
-            // dd($imageUpload,$imageName);
             $update->image = '/backend/media/featured_images/'.$imageName;
             $update->save();
         }
