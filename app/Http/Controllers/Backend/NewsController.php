@@ -176,19 +176,21 @@ class NewsController extends Controller
     public function destroy($news)
     {
         $delete = News::find($news);
-        $image_path = $delete->image;
-        // dd($image_path);
-        if(File::exists($image_path)) {
-            Storage::delete($image_path);
+
+        //getting the old image/imagepath of the old post
+        $orginalImage = $delete->image;
+
+        //generating the full path of the post's original image
+        $imagepath = public_path($orginalImage);
+
+        if (File::exists(public_path($orginalImage))) {
+            File::delete(public_path($orginalImage));
+            // $image_path = $delete->image;
         }
 
         $delete->delete();
         Alert::success('Success', 'News Deleted successfully.');
         return redirect()->back();
 
-    }
-
-    public function what(Request $request){
-        dd($request->all());
     }
 }
