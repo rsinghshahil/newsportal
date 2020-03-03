@@ -1,5 +1,9 @@
 @extends('layouts.apps')
 @section('content')
+@if($count == '0')
+		<p>No Post yet related to this category</p>
+
+@else
     		<!-- SECTION -->
 		<div class="section">
 			<!-- CONTAINER -->
@@ -14,13 +18,9 @@
 							<!-- tab nav -->
 							<ul class="tab-nav pull-right">
 								<li class="active"><a data-toggle="tab" href="#tab1">All</a></li>
-								<li><a data-toggle="tab" href="">News</a></li>
 								<li><a data-toggle="tab" href="{{ route('sports')}}">Sport</a></li>
-								<li><a data-toggle="tab" href="{{ route('politics')}}">Music</a></li>
+								<li><a data-toggle="tab" href="{{ route('politics')}}">Politics</a></li>
 								<li><a data-toggle="tab" href="{{ route('contact')}}">Business</a></li>
-                                <li><a data-toggle="tab" href="{{ route('politics')}}">Politics</a></li>
-								<li><a data-toggle="tab" href="{{ route('contact')}}">Contact</a></li>
-								<li><a data-toggle="tab" href="{{ route('about')}}">About</a></li>
 
 							</ul>
 							<!-- /tab nav -->
@@ -689,112 +689,10 @@
 
 		<!-- AD SECTION -->
 		<div class="visible-lg visible-md">
-			<img class="center-block" src="./img/ad-3.jpg" alt="">
+			<img class="center-block" src="https://www.onlinekhabar.com/wp-content/uploads/2019/11/1140x100_Online-khabar.gif" alt="">
 		</div>
 		<!-- /AD SECTION -->
 
-		<!-- SECTION -->
-		<div class="section">
-			<!-- CONTAINER -->
-			<div class="container">
-				<!-- ROW -->
-				<div class="row">
-					<!-- Main Column -->
-					<div class="col-md-12">
-						<!-- section title -->
-						<div class="section-title">
-							<h2 class="title">Popular Video</h2>
-							<div id="nav-carousel-2" class="custom-owl-nav pull-right"></div>
-						</div>
-						<!-- /section title -->
-
-						<!-- owl carousel 2 -->
-						<div id="owl-carousel-2" class="owl-carousel owl-theme">
-							<!-- ARTICLE -->
-							<article class="article thumb-article">
-								<div class="article-img">
-									<img src="./img/img-thumb-1.jpg" alt="">
-								</div>
-								<div class="article-body">
-									<ul class="article-info">
-										<li class="article-category"><a href="#">News</a></li>
-										<li class="article-type"><i class="fa fa-video-camera"></i></li>
-									</ul>
-									<h3 class="article-title"><a href="#">Duis urbanitas eam in, tempor consequat.</a></h3>
-									<ul class="article-meta">
-										<li><i class="fa fa-clock-o"></i> January 31, 2017</li>
-										<li><i class="fa fa-comments"></i> 33</li>
-									</ul>
-								</div>
-							</article>
-							<!-- /ARTICLE -->
-
-							<!-- ARTICLE -->
-							<article class="article thumb-article">
-								<div class="article-img">
-									<img src="./img/img-thumb-2.jpg" alt="">
-								</div>
-								<div class="article-body">
-									<ul class="article-info">
-										<li class="article-category"><a href="#">News</a></li>
-										<li class="article-type"><i class="fa fa-video-camera"></i></li>
-									</ul>
-									<h3 class="article-title"><a href="#">Duis urbanitas eam in, tempor consequat.</a></h3>
-									<ul class="article-meta">
-										<li><i class="fa fa-clock-o"></i> January 31, 2017</li>
-										<li><i class="fa fa-comments"></i> 33</li>
-									</ul>
-								</div>
-							</article>
-							<!-- /ARTICLE -->
-
-							<!-- ARTICLE -->
-							<article class="article thumb-article">
-								<div class="article-img">
-									<img src="./img/img-thumb-3.jpg" alt="">
-								</div>
-								<div class="article-body">
-									<ul class="article-info">
-										<li class="article-category"><a href="#">News</a></li>
-										<li class="article-type"><i class="fa fa-video-camera"></i></li>
-									</ul>
-									<h3 class="article-title"><a href="#">Duis urbanitas eam in, tempor consequat.</a></h3>
-									<ul class="article-meta">
-										<li><i class="fa fa-clock-o"></i> January 31, 2017</li>
-										<li><i class="fa fa-comments"></i> 33</li>
-									</ul>
-								</div>
-							</article>
-							<!-- /ARTICLE -->
-
-							<!-- ARTICLE -->
-							<article class="article thumb-article">
-								<div class="article-img">
-									<img src="./img/img-thumb-4.jpg" alt="">
-								</div>
-								<div class="article-body">
-									<ul class="article-info">
-										<li class="article-category"><a href="#">News</a></li>
-										<li class="article-type"><i class="fa fa-video-camera"></i></li>
-									</ul>
-									<h3 class="article-title"><a href="#">Duis urbanitas eam in, tempor consequat.</a></h3>
-									<ul class="article-meta">
-										<li><i class="fa fa-clock-o"></i> January 31, 2017</li>
-										<li><i class="fa fa-comments"></i> 33</li>
-									</ul>
-								</div>
-							</article>
-							<!-- /ARTICLE -->
-						</div>
-						<!-- /owl carousel 2 -->
-					</div>
-					<!-- /Main Column -->
-				</div>
-				<!-- /ROW -->
-			</div>
-			<!-- /CONTAINER -->
-		</div>
-		<!-- /SECTION -->
 
 		<!-- SECTION -->
 		<div class="section">
@@ -809,12 +707,12 @@
 							<h2 class="title">Popular Posts</h2>
 						</div>
 						<!-- /section title -->
-
+						@foreach ($popular as $post )
 						<!-- ARTICLE -->
 						<article class="article row-article">
 							<div class="article-img">
 								<a href="#">
-									<img src="./img/img-md-1.jpg" alt="">
+									<img src="{{asset($post->image)}}" alt="{{$post->headline}}">
 								</a>
 							</div>
 							<div class="article-body">
@@ -822,92 +720,18 @@
 									<li class="article-category"><a href="#">News</a></li>
 									<li class="article-type"><i class="fa fa-file-text"></i></li>
 								</ul>
-								<h3 class="article-title"><a href="#">Duis urbanitas eam in, tempor consequat.</a></h3>
+								<h3 class="article-title"><a href="#">{{$post->headline}}</a></h3>
 								<ul class="article-meta">
 									<li><i class="fa fa-clock-o"></i> January 31, 2017</li>
 									<li><i class="fa fa-comments"></i> 33</li>
 								</ul>
-								<p>Populo tritani laboramus ex mei, no eum iuvaret ceteros euripidis, ne alia sadipscing mei. Te inciderint cotidieque pro, ei iisque docendi qui.</p>
+								<p>{!! str_limit($post->content,100,'....') !!}</p>
 							</div>
 						</article>
-						<!-- /ARTICLE -->
+						<!-- /ARTICLE -->	
+						@endforeach
+						
 
-						<!-- ARTICLE -->
-						<article class="article row-article">
-							<div class="article-img">
-								<a href="#">
-									<img src="./img/img-md-2.jpg" alt="">
-								</a>
-							</div>
-							<div class="article-body">
-								<ul class="article-info">
-									<li class="article-category"><a href="#">News</a></li>
-									<li class="article-type"><i class="fa fa-file-text"></i></li>
-								</ul>
-								<h3 class="article-title"><a href="#">Duis urbanitas eam in, tempor consequat.</a></h3>
-								<ul class="article-meta">
-									<li><i class="fa fa-clock-o"></i> January 31, 2017</li>
-									<li><i class="fa fa-comments"></i> 33</li>
-								</ul>
-								<p>Populo tritani laboramus ex mei, no eum iuvaret ceteros euripidis, ne alia sadipscing mei. Te inciderint cotidieque pro, ei iisque docendi qui.</p>
-							</div>
-						</article>
-						<!-- /ARTICLE -->
-
-						<!-- ARTICLE -->
-						<article class="article row-article">
-							<div class="article-img">
-								<a href="#">
-									<img src="./img/img-md-3.jpg" alt="">
-								</a>
-							</div>
-							<div class="article-body">
-								<ul class="article-info">
-									<li class="article-category"><a href="#">News</a></li>
-									<li class="article-type"><i class="fa fa-file-text"></i></li>
-								</ul>
-								<h3 class="article-title"><a href="#">Duis urbanitas eam in, tempor consequat.</a></h3>
-								<ul class="article-meta">
-									<li><i class="fa fa-clock-o"></i> January 31, 2017</li>
-									<li><i class="fa fa-comments"></i> 33</li>
-								</ul>
-								<p>Populo tritani laboramus ex mei, no eum iuvaret ceteros euripidis, ne alia sadipscing mei. Te inciderint cotidieque pro, ei iisque docendi qui.</p>
-							</div>
-						</article>
-						<!-- /ARTICLE -->
-
-						<!-- ARTICLE -->
-						<article class="article row-article">
-							<div class="article-img">
-								<a href="#">
-									<img src="./img/img-md-4.jpg" alt="">
-								</a>
-							</div>
-							<div class="article-body">
-								<ul class="article-info">
-									<li class="article-category"><a href="#">News</a></li>
-									<li class="article-type"><i class="fa fa-file-text"></i></li>
-								</ul>
-								<h3 class="article-title"><a href="#">Duis urbanitas eam in, tempor consequat.</a></h3>
-								<ul class="article-meta">
-									<li><i class="fa fa-clock-o"></i> January 31, 2017</li>
-									<li><i class="fa fa-comments"></i> 33</li>
-								</ul>
-								<p>Populo tritani laboramus ex mei, no eum iuvaret ceteros euripidis, ne alia sadipscing mei. Te inciderint cotidieque pro, ei iisque docendi qui.</p>
-							</div>
-						</article>
-						<!-- /ARTICLE -->
-
-						<!-- pagination -->
-						<div class="article-pagination">
-							<ul>
-								<li class="active"><a href="#" class="active">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-							</ul>
-						</div>
-						<!-- /pagination -->
 					</div>
 					<!-- /Main Column -->
 
@@ -922,41 +746,25 @@
 							<!-- owl carousel 4 -->
 							<div id="owl-carousel-4" class="owl-carousel owl-theme">
 								<!-- ARTICLE -->
+								@foreach ( $featured as $post)
 								<article class="article thumb-article">
 									<div class="article-img">
-										<img src="./img/img-thumb-1.jpg" alt="">
+										<img src="{{asset($post->image)}}" alt="">
 									</div>
 									<div class="article-body">
 										<ul class="article-info">
 											<li class="article-category"><a href="#">News</a></li>
 											<li class="article-type"><i class="fa fa-video-camera"></i></li>
 										</ul>
-										<h3 class="article-title"><a href="#">Duis urbanitas eam in, tempor consequat.</a></h3>
+										<h3 class="article-title"><a href="#">{{$post->headline}}</a></h3>
 										<ul class="article-meta">
 											<li><i class="fa fa-clock-o"></i> January 31, 2017</li>
 											<li><i class="fa fa-comments"></i> 33</li>
 										</ul>
 									</div>
-								</article>
-								<!-- /ARTICLE -->
-
-								<!-- ARTICLE -->
-								<article class="article thumb-article">
-									<div class="article-img">
-										<img src="./img/img-thumb-2.jpg" alt="">
-									</div>
-									<div class="article-body">
-										<ul class="article-info">
-											<li class="article-category"><a href="#">News</a></li>
-											<li class="article-type"><i class="fa fa-video-camera"></i></li>
-										</ul>
-										<h3 class="article-title"><a href="#">Duis urbanitas eam in, tempor consequat.</a></h3>
-										<ul class="article-meta">
-											<li><i class="fa fa-clock-o"></i> January 31, 2017</li>
-											<li><i class="fa fa-comments"></i> 33</li>
-										</ul>
-									</div>
-								</article>
+								</article>	
+								@endforeach
+								
 								<!-- /ARTICLE -->
 							</div>
 							<!-- /owl carousel 4 -->
@@ -1016,5 +824,6 @@
 			<!-- /CONTAINER -->
 		</div>
 		<!-- /SECTION -->
+@endif
 
 @endsection

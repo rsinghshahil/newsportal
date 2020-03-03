@@ -20,14 +20,43 @@
 						<!-- section title -->
 						<div class="section-title">
 							<h2 class="title">Technology</h2>
-							<!-- tab nav -->
-							<ul class="tab-nav pull-right">
-								<li class="active"><a data-toggle="tab" href="#tab1">All</a></li>
-								<li><a data-toggle="tab" href="#tab1">Cricket</a></li>
-								<li><a data-toggle="tab" href="#tab1">Football</a></li>
-								<li><a data-toggle="tab" href="#tab1">Basketball</a></li>
-							</ul>
-							<!-- /tab nav -->
+							@if($count == '0')
+									<p>No Post yet related to this category</p>
+							@elseif($count > '0' and $count < '5')
+							<div class="tab-content">
+							<!-- tab1 -->
+							<div id="tab1" class="tab-pane fade in active">
+								<!-- row -->
+								
+								<div class="row">
+								@foreach($lNews as $post)
+									<!-- Column 1 -->
+									<div class="col-md-3 col-sm-6">
+										<!-- ARTICLE -->
+										<article class="article">
+											<div class="article-img">
+												<a href="#">
+													<img src="{{asset($post->image)}}" alt="">
+												</a>
+												<ul class="article-info">
+													<li class="article-type"><i class="fa fa-camera"></i></li>
+												</ul>
+											</div>
+											<div class="article-body">
+												<h4 class="article-title"><a href="#" data-toggle="tooltip" title="{{$post->headline}}">{!! str_limit($post->headline,20,'....') !!}</a></h4>
+												<ul class="article-meta">
+													<li><i class="fa fa-clock-o"></i>{{$post->created_at}}</li>
+													<li><i class="fa fa-comments"></i> 33</li>
+												</ul>
+											</div>
+										</article>
+										<!-- /ARTICLE -->
+									</div>
+									<!-- /Column 1 -->
+@endforeach
+									
+								</div>	
+							@else
 						</div>
 						<!-- /section title -->
 
@@ -96,9 +125,13 @@
 										
 									</div>
 									<!-- /Column 1 -->
-
+									
 									@endforeach
+									
 								</div>
+								{{ $sNews->links() }}
+								@endif
+								
 								
 								<!-- /row -->
 							</div>

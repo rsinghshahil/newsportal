@@ -34,10 +34,18 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
+    {   $count = DB::table('news')->get()->count();
+        // dd($count);
+        if($count == '0'){
         
-        return view('front.index');
-
+            return view('front.index',compact('count'));
+        }
+        else{
+        $popular = News::inRandomOrder()->limit(4)->get();
+        $featured = News::inRandomOrder()->limit(2)->get();
+        $photos = News::orderBy('id','desc')->take(8)->get();
+        return view('front.index',compact('popular','featured','photos','count'));
+        }
     }
     public function sports(){
         $posts = DB::table('news')->where('category', '=', 'sports')->get();
