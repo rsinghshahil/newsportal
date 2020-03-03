@@ -35,62 +35,182 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $news = News::orderBy('id', 'desc')->take(2)->get();
+        
         return view('front.index');
 
     }
     public function sports(){
-        $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->take(4)->get();
-        $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->limit(6)->get();
-        return view('front.pages.sports',compact('lNews','sNews'));
+        $posts = DB::table('news')->where('category', '=', 'sports')->get();
+        $count=$posts->count();
+        // dd($count);
+        
+        if($count == '0'){
+        
+            return view('front.pages.sports',compact('count'));
+        }
+
+        elseif($count > '0' and $count < '5' ){
+        
+        $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->where('category', '=', 'sports')->take($count)->get();
+        return view('front.pages.sports',compact('lNews','count'));
+        }
+        else{
+            $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->where('category', '=', 'sports')->take(4)->get();
+            $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->where('category', '=', 'sports')->paginate(6);
+            return view('front.pages.Sports',compact('lNews','sNews','count'));
+        }
+
     }
 
     public function politics(){
-        $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->take(4)->get();
-        $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->limit(6)->get();
-        return view('front.pages.politics',compact('lNews','sNews'));
+        $posts = DB::table('news')->where('category', '=', 'politics')->get();
+        $count=$posts->count();
+        // dd($count);
+        if($count == '0'){
+        
+            return view('front.pages.sports',compact('count'));
+        }
+        elseif($count > '0' and $count < '5' ){
+        
+            $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->where('category', '=', 'politics')->take($count)->get();
+            return view('front.pages.politics',compact('lNews','count'));
+            }
+            else{
+                $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->where('category', '=', 'politics')->take(4)->get();
+                $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->where('category', '=', 'politics')->paginate(6);
+                return view('front.pages.politics',compact('lNews','sNews','count'));
+            }
     }
 
     public function lifestyle(){
-        $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->take(4)->get();
-        $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->limit(6)->get();
-        return view('front.pages.lifestyle',compact('lNews','sNews'));
+        $posts = DB::table('news')->where('category', '=', 'lifestyle')->get();
+        $count=$posts->count();
+        // dd($count);
+        if($count == '0'){
+        
+            return view('front.pages.sports',compact('count'));
+        }
+        elseif($count > '0' and $count < '5' ){
+        
+            $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->where('category', '=', 'lifestyle')->take($count)->get();
+            return view('front.pages.lifestyle',compact('lNews','count'));
+            }
+            else{
+                $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->where('category', '=', 'lifestyle')->take(4)->get();
+                $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->where('category', '=', 'lifestyle')->paginate(6);
+                return view('front.pages.lifestyle',compact('lNews','sNews','count'));
+            }
     }
 
     public function technology(){
-        $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->take(4)->get();
-        $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->limit(6)->get();
-        return view('front.pages.technology',compact('lNews','sNews'));
+        $posts = DB::table('news')->where('category', '=', 'technology')->get();
+        $count=$posts->count();
+        // dd($count);
+        
+        if($count == '0'){
+        
+            return view('front.pages.technology',compact('count'));
+        }
+
+        elseif($count > '0' and $count < '5' ){
+        
+            $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->where('category', '=', 'technology')->take($count)->get();
+            return view('front.pages.technology',compact('lNews','count'));
+            }
+            else{
+                $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->where('category', '=', 'technology')->take(4)->get();
+                $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->where('category', '=', 'technology')->paginate(6);
+                return view('front.pages.technology',compact('lNews','sNews','count'));
+            }
     }
 
     public function international(){
-        $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->take(4)->get();
-        $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->limit(6)->get();
-        return view('front.pages.international',compact('lNews','sNews'));
+        $posts = DB::table('news')->where('category', '=', 'international')->get();
+        $count=$posts->count();
+        // dd($count);
+        
+        if($count == '0'){
+        
+            return view('front.pages.international',compact('count'));
+        }
+
+        elseif($count > '0' and $count < '5' ){
+        
+            $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->where('category', '=', 'international')->take($count)->get();
+            return view('front.pages.international',compact('lNews','count'));
+            }
+            else{
+                $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->where('category', '=', 'international')->take(4)->get();
+                $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->where('category', '=', 'international')->paginate(6);
+                return view('front.pages.international',compact('lNews','sNews','count'));
+            }
     }
 
     public function entertainment(){
-        $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->take(4)->get();
-        $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->limit(6)->get();
-        return view('front.pages.entertainment',compact('lNews','sNews'));
+        $posts = DB::table('news')->where('category', '=', 'entertainment')->get();
+        $count=$posts->count();
+        // dd($count);
+        
+        if($count == '0'){
+        
+            return view('front.pages.entertainment',compact('count'));
+        }
+
+        elseif($count > '0' and $count < '5' ){
+        
+            $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->where('category', '=', 'entertainment')->take($count)->get();
+            return view('front.pages.entertainment',compact('lNews','count'));
+            }
+            else{
+                $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->where('category', '=', 'entertainment')->take(4)->get();
+                $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->where('category', '=', 'entertainment')->paginate(6);
+                return view('front.pages.entertainment',compact('lNews','sNews','count'));
+            }
     }
 
-    public function blog(){
-        $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->take(4)->get();
-        $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->limit(6)->get();
-        return view('front.pages.blog',compact('lNews','sNews'));
-    }
 
     public function health(){
-        $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->take(4)->get();
-        $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->limit(6)->get();
-        return view('front.pages.health',compact('lNews','sNews'));
+        $posts = DB::table('news')->where('category', '=', 'health')->get();
+        $count=$posts->count();
+        // dd($count);
+        
+        if($count == '0'){
+        
+            return view('front.pages.health',compact('count'));
+        }
+
+        elseif($count > '0' and $count < '5' ){
+        
+            $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->where('category', '=', 'health')->take($count)->get();
+            return view('front.pages.sports',compact('lNews','count'));
+            }
+            else{
+                $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->where('category', '=', 'health')->take(4)->get();
+                $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->where('category', '=', 'health')->paginate(6);
+                return view('front.pages.health',compact('lNews','sNews','count'));
+            }
     }
 
     public function business(){
-        $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->take(4)->get();
-        $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->limit(6)->get();
-        return view('front.pages.business',compact('lNews','sNews'));
+        $posts = DB::table('news')->where('category', '=', 'business')->get();
+        $count=$posts->count();
+        // dd($count);
+        
+        if($count == '0'){
+        
+            return view('front.pages.business',compact('count'));
+        }
+
+        elseif($count > '0' and $count < '5' ){
+        
+            $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->where('category', '=', 'business')->take($count)->get();
+            return view('front.pages.business',compact('lNews','count'));
+            }
+            else{
+                $lNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))->where('category', '=', 'business')->take(4)->get();
+                $sNews = News::where('id', '<',$lNews[3]->id )->orderBy('id','desc')->where('category', '=', 'business')->paginate(6);
+                return view('front.pages.business',compact('lNews','sNews','count'));
+            }
     }
 
     public function contact(){
@@ -99,10 +219,5 @@ class HomeController extends Controller
 
     public function about(){
         return view('front.about');
-    }
-
-    public function getHeaderNews(){
-        $news = News::orderBy('id', 'desc')->take(2)->get();
-        return view('partials.header-banners',compact('news'));
     }
 }

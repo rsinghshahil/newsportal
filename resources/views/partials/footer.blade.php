@@ -57,52 +57,23 @@
 
 								<!-- ARTICLE -->
 								<article class="article widget-article">
+								@foreach ($footernews as $news )
+									
+								
 									<div class="article-img">
 										<a href="#">
-											<img src="./img/img-widget-1.jpg" alt="">
+											<img src="{{asset($news->image)}}" alt="">
 										</a>
 									</div>
 									<div class="article-body">
-										<h4 class="article-title"><a href="#">Duis urbanitas eam in, tempor consequat.</a></h4>
+										<h4 class="article-title"><a href="#">{{$news->headline}}</a></h4>
 										<ul class="article-meta">
 											<li><i class="fa fa-clock-o"></i> January 31, 2017</li>
 											<li><i class="fa fa-comments"></i> 33</li>
 										</ul>
 									</div>
-								</article>
-								<!-- /ARTICLE -->
+								@endforeach
 
-								<!-- ARTICLE -->
-								<article class="article widget-article">
-									<div class="article-img">
-										<a href="#">
-											<img src="./img/img-widget-2.jpg" alt="">
-										</a>
-									</div>
-									<div class="article-body">
-										<h4 class="article-title"><a href="#">Duis urbanitas eam in, tempor consequat.</a></h4>
-										<ul class="article-meta">
-											<li><i class="fa fa-clock-o"></i> January 31, 2017</li>
-											<li><i class="fa fa-comments"></i> 33</li>
-										</ul>
-									</div>
-								</article>
-								<!-- /ARTICLE -->
-
-								<!-- ARTICLE -->
-								<article class="article widget-article">
-									<div class="article-img">
-										<a href="#">
-											<img src="./img/img-widget-3.jpg" alt="">
-										</a>
-									</div>
-									<div class="article-body">
-										<h4 class="article-title"><a href="#">Duis urbanitas eam in, tempor consequat.</a></h4>
-										<ul class="article-meta">
-											<li><i class="fa fa-clock-o"></i> January 31, 2017</li>
-											<li><i class="fa fa-comments"></i> 33</li>
-										</ul>
-									</div>
 								</article>
 								<!-- /ARTICLE -->
 							</div>

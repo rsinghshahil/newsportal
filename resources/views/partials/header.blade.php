@@ -52,12 +52,11 @@
                     <li><a href="{{route('politics')}}">Politics</a></li>
                     <li><a href="{{route('sports')}}">Sport</a></li>
                     <li><a href="{{route('lifestyle')}}">Lifestyle</a></li>
-                    <li><a href="{{route('interview')}}">Interview</a></li>
-                    <li><a href="{{route('blog')}}">Blog</a></li>
                     <li><a href="{{route('business')}}">Business</a></li>
                     <li><a href="{{route('international')}}">International</a></li>
                     <li><a href="{{route('health')}}">Health</a></li>
                     <li><a href="{{route('entertainment')}}">Entertainment</a></li>
+                    <li><a href="{{route('technology')}}">Technology</a></li>
                 </ul>
             </nav>
             <div class="button-nav">

@@ -28,7 +28,7 @@ class HomeServiceProvider extends ServiceProvider
 
     public function partials()
     {
-        view()->composer('partials.header-banners', 'App\Http\Views\Composers\partialComposer');
+        view()->composer('partials.*', 'App\Http\Views\Composers\partialComposer');
 
     }
 }

@@ -8,6 +8,7 @@ class partialComposer {
 
     public function compose(View $view)
     {
-        $view->with('banners', News::take(3)->get());
+        $view->with('banners', News::orderBy('id','desc')->take(3)->get())
+        ->with('footernews',News::orderBy('id','desc')->take(3)->get());
     }
 }
