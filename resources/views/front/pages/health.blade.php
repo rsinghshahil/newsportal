@@ -9,7 +9,7 @@
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb" style="background:#EF233C;">
 						<li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-						<li class="breadcrumb-item active">Sports</li>
+						<li class="breadcrumb-item active">Health</li>
 					</ol>
 				</nav>
 			</div>
@@ -19,11 +19,11 @@
 					<div class="col-md-12">
 						<!-- section title -->
 						<div class="section-title">
-							<h2 class="title">Sports</h2>
-							@if($count == '0')
+							<h2 class="title">Health</h2>
+						@if($count == '0')
 									<p>No Post yet related to this category</p>
 								
-							@else
+								@else
 						</div>
 						<!-- /section title -->
 
@@ -92,14 +92,10 @@
 										
 									</div>
 									<!-- /Column 1 -->
-									
+
 									@endforeach
-									
 								</div>
-								{{ $sNews->links() }}
 								@endif
-								
-								
 								<!-- /row -->
 							</div>
 							<!-- /tab1 -->

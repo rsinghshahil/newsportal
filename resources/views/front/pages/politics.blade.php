@@ -20,11 +20,10 @@
 						<!-- section title -->
 						<div class="section-title">
 							<h2 class="title">Politics</h2>
-							<!-- tab nav -->
-							<ul class="tab-nav pull-right">
-								<li class="active"><a data-toggle="tab" href="#tab1">All</a></li>
-							</ul>
-							<!-- /tab nav -->
+							@if($count == '0')
+									<p>No Post yet related to this category</p>
+								
+							@else
 						</div>
 						<!-- /section title -->
 
@@ -96,7 +95,7 @@
 
 									@endforeach
 								</div>
-								
+								@endif
 								<!-- /row -->
 							</div>
 							<!-- /tab1 -->
