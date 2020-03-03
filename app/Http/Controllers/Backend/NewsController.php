@@ -130,36 +130,37 @@ class NewsController extends Controller
             'content' => 'required',
             'category' => 'required',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-<<<<<<< HEAD
-
-=======
-
-
->>>>>>> af2eb8497a1480b1c28dbcd88566842fe2312687
         ]);
         $update = News::find($request->news_id);
         $update->headline = $request->headline;
         $update->content = $request->content;
-<<<<<<< HEAD
         $update->category_id = $request->category_id;
-
-=======
         $update->category = $request->category;
         $update->url = SlugService::createSlug(News::class, 'url', $request->headline);
 
->>>>>>> af2eb8497a1480b1c28dbcd88566842fe2312687
+        //getting the old image/imagepath of the old post
+        $orginalImage = $update->image;
+
+        //generating the full path of the post's original image
+        $imagepath = public_path($orginalImage);
+
         if($request->has('image')){
             $imageUpload = $request->file('image');
+
+            //if the request has a new file, deleting the previous image for the new image.
+            if (File::exists(public_path($orginalImage))) {
+                File::delete(public_path($orginalImage));
+            }
+
             $imageName = time() .'.'.$imageUpload->getClientOriginalExtension();
             $imagepath = public_path('/backend/media/featured_images/');
             $imageUpload->move($imagepath,$imageName);
-            // dd($imageUpload,$imageName);
             $update->image = '/backend/media/featured_images/'.$imageName;
             $update->save();
         }else{
+            $update->save();
+        }
 
-        $update->save();
-     }
         Alert::success('Success', 'News updated successfully.');
         return redirect()->route('admin.news.index')
                         ->with('success','News Published successfully.');
