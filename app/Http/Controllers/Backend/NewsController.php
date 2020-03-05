@@ -71,7 +71,10 @@ class NewsController extends Controller
         $imageUpload = $request->file('image');
         $imageName = time() .'.'.$imageUpload->getClientOriginalExtension();
         $imagepath = public_path('/backend/media/featured_images/');
-        $imageUpload->move($imagepath,$imageName);
+
+        $resizeImage = Image::make($imageUpload->getRealPath())->resize('3840', '2160')->save($imagepath . '/' . $imageName);
+
+        // $imageUpload->move($imagepath,$imageName);
 
         News::create([
             'headline' => $request['headline'],
@@ -80,7 +83,6 @@ class NewsController extends Controller
             // 'url' => SlugService::createSlug(News::class, 'url', $request->headline),
             'image' => '/backend/media/featured_images/'.$imageName,
             ]);
-        // $img = News::make($imagepath)->resize(760, 500)->save($imagepath);
     }
      else{
         News::create($request->all());
@@ -160,7 +162,18 @@ class NewsController extends Controller
 
             $imageName = time() .'.'.$imageUpload->getClientOriginalExtension();
             $imagepath = public_path('/backend/media/featured_images/');
-            $imageUpload->move($imagepath,$imageName);
+
+            // $resizeImage = Image::make($imageUpload->getRealPath());
+            // $resizeImage->resize(3840,2160, function($constraint) {
+            //     $constraint->aspectRatio();
+            //     $constraint->upsize();
+            // })->save($imagepath . '/' . $imageName);
+            // // dd($resizeImage);
+
+            // $imageUpload->move($imagepath,$imageName);
+
+            $resizeImage = Image::make($imageUpload->getRealPath())->resize('3840', '2160')->save($imagepath . '/' . $imageName);
+
             $update->image = '/backend/media/featured_images/'.$imageName;
             $update->save();
         }
