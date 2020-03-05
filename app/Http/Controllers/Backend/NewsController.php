@@ -72,7 +72,7 @@ class NewsController extends Controller
         $imageName = time() .'.'.$imageUpload->getClientOriginalExtension();
         $imagepath = public_path('/backend/media/featured_images/');
         $imageUpload->move($imagepath,$imageName);
-        
+
         News::create([
             'headline' => $request['headline'],
             'content' => $request['content'],
@@ -143,6 +143,9 @@ class NewsController extends Controller
         $update->category = $request->category;
         $update->url = SlugService::createSlug(News::class, 'url', $request->headline);
 
+        //getting the old image/imagepath of the old post
+        $orginalImage = $update->image;
+
         if($request->has('image')){
             $imageUpload = $request->file('image');
 
@@ -181,7 +184,7 @@ class NewsController extends Controller
         $orginalImage = $delete->image;
 
         //generating the full path of the post's original image
-        $imagepath = public_path($orginalImage);
+        // $imagepath = public_path($orginalImage);
 
         if (File::exists(public_path($orginalImage))) {
             File::delete(public_path($orginalImage));
