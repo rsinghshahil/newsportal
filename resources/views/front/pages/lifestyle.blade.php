@@ -7,7 +7,7 @@
 			<!--Breadcum-->
 			<div class="breadcumb">
 				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb" style="background:#EF233C;">
+					<ol class="breadcrumb" style="background:#F24F63;">
 						<li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
 						<li class="breadcrumb-item active">Lifestyle</li>
 					</ol>
@@ -45,7 +45,7 @@
 											<div class="article-body">
 												<h4 class="article-title"><a href="#" data-toggle="tooltip" title="{{$post->headline}}">{!! str_limit($post->headline,20,'....') !!}</a></h4>
 												<ul class="article-meta">
-													<li><i class="fa fa-clock-o"></i>{{$post->created_at}}</li>
+													<li><i class="fa fa-clock-o"></i>{{$post->created_at->format('j F, Y')}}</li>
 													<li><i class="fa fa-comments"></i> 33</li>
 												</ul>
 											</div>
@@ -83,7 +83,7 @@
 											<div class="article-body">
 												<h4 class="article-title"><a href="#" data-toggle="tooltip" title="{{$post->headline}}">{!! str_limit($post->headline,20,'....') !!}</a></h4>
 												<ul class="article-meta">
-													<li><i class="fa fa-clock-o"></i>{{$post->created_at}}</li>
+													<li><i class="fa fa-clock-o"></i>{{$post->created_at->format('j F, Y')}}</li>
 													<li><i class="fa fa-comments"></i> 33</li>
 												</ul>
 											</div>
@@ -115,7 +115,7 @@
 											<div class="article-body">
 												<h4 class="article-title"><a href="#" data-toggle="tooltip" title="{{$post->headline}}">{!! str_limit($post->headline,25,'....') !!}</a></h4>
 												<ul class="article-meta">
-													<li><i class="fa fa-clock-o"></i>{{$post->created_at}}</li>
+													<li><i class="fa fa-clock-o"></i>{{$post->created_at->format('j F, Y')}}</li>
 													<li><i class="fa fa-comments"></i> 33</li>
 												</ul>
 											</div>

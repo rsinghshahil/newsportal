@@ -33,6 +33,7 @@ Route::get('business','Homecontroller@business')->name('business');
 Route::get('health','Homecontroller@health')->name('health');
 Route::get('contact','HomeController@contact')->name('contact');
 Route::get('about','HomeController@about')->name('about');
+Route::get('/show/{slug}','HomeController@show');
 // These are the user routes that needs NO authentication
 Route::group(['namespace' => 'front'], function () {
 
@@ -63,7 +64,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'backend', '
     Route::resource('/news','NewsController');
     Route::get('/news/delete/{id}','NewsController@destroy');
     Route::get('/news/edit/{id}','NewsController@edit');
-    Route::get('/news/show/{id}','NewsController@show');
+    Route::get('/news/show/{url}','NewsController@show');
     // Route::get('/add-news/update/{id}','NewsController@update');
 
 });
