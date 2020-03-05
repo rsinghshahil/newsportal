@@ -97,10 +97,11 @@ class NewsController extends Controller
      * @param  \App\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function show($news)
+    public function show($url)
 
     {
-        $post = News::find($news);
+        // $post = News::find($url);
+        $post = News::where('url', $url)->first();
 
         return view('backend.news.show',compact('post'));
    }
@@ -146,7 +147,10 @@ class NewsController extends Controller
         //getting the old image/imagepath of the old post
         $orginalImage = $update->image;
 
-        if($request->has('image')){
+        //generating the full path of the post's original image
+        // $imagepath = public_path($orginalImage);
+
+        if ($request->has('image')) {
             $imageUpload = $request->file('image');
 
             //if the request has a new file, deleting the previous image for the new image.

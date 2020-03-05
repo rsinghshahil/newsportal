@@ -57,18 +57,18 @@
 
 								<!-- ARTICLE -->
 								<article class="article widget-article">
-								@foreach ($footernews as $news )
+								@foreach ($footernews as $post )
 									
 								
 									<div class="article-img">
-										<a href="#">
-											<img src="{{asset($news->image)}}" alt="">
+										<a href="{{url('/show/'.$post->url)}}">
+											<img src="{{asset($post->image)}}" alt="">
 										</a>
 									</div>
 									<div class="article-body">
-										<h4 class="article-title"><a href="#">{{$news->headline}}</a></h4>
+										<h4 class="article-title"><a href="{{url('/show/'.$post->url)}}">{!! str_limit($post->headline,50,'....') !!}</a></h4>
 										<ul class="article-meta">
-											<li><i class="fa fa-clock-o"></i> January 31, 2017</li>
+											<li><i class="fa fa-clock-o"></i>{{$post->created_at->format('j F, Y')}} </li>
 											<li><i class="fa fa-comments"></i> 33</li>
 										</ul>
 									</div>

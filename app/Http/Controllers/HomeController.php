@@ -34,10 +34,31 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
+    {   $count = DB::table('news')->get()->count();
+        // dd($count);
+        if($count == '0'){
         
-        return view('front.index');
+            return view('front.index',compact('count'));
+        }
+        else{
+        $trend = News::inRandomOrder()->limit(4)->get();
+        $popular = News::inRandomOrder()->limit(4)->get();
+        $featured = News::inRandomOrder()->limit(2)->get();
+        $photos = News::inRandomOrder()->limit(8)->get();
+        $recents = News::orderBy('id','desc')->take(6)->get();
+        //politics news
+        $largePoliticNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))
+                ->where('category', '=', 'politics')->take(1)->get();
+        $smallPoliticNews = News::where('id', '<',$largePoliticNews[0]->id )->orderBy('id','desc')
+                ->where('category', '=', 'politics')->take(2)->get();
+        //sports news
+        $largeSportNews = News::orderBy('id', 'desc')->select('*',DB::raw('date(created_at) as created_at'))
+                ->where('category', '=', 'sports')->take(1)->get();
+        $smallSportNews = News::where('id', '<',$largePoliticNews[0]->id )->orderBy('id','desc')
+                ->where('category', '=', 'sports')->take(2)->get();
 
+        return view('front.index',compact('trend','popular','featured','photos','recents','smallPoliticNews','largePoliticNews','smallSportNews','largeSportNews','count'));
+        }
     }
     public function sports(){
         $posts = DB::table('news')->where('category', '=', 'sports')->get();
@@ -219,5 +240,12 @@ class HomeController extends Controller
 
     public function about(){
         return view('front.about');
+    }
+
+    public function show($url){
+        $post = News::where('url', $url)->first();
+        $post->increment('popularity',1);
+        $recents = News::orderBy('id','desc')->take(5)->get();
+        return view('front.view-news',compact('post','recents'));
     }
 }

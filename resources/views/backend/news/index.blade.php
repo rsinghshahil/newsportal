@@ -35,7 +35,7 @@
                 <td>{{$post->created_at}}</td>
 
                 <td>
-                    <a  href="{{ url('admin/news/show/'.$post->id)  }}"  data-toggle="tooltip" data-placement="bottom" title="View"><i class="fas fa-eye"></i></a>
+                    <a  href="{{ url('admin/news/show/'.$post->url)  }}"  data-toggle="tooltip" data-placement="bottom" title="View"><i class="fas fa-eye"></i></a>
                     <a href="{{ url('admin/news/edit/'.$post->id) }}"  data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-edit" style="color: #29b6f6;"></i></a>
                     <a href="{{ url('admin/news/delete/'.$post->id) }}"  data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash"  style="color: #f05050"></i></a>
                 </td>

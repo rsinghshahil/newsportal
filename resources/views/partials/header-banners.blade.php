@@ -9,12 +9,12 @@
                     </div>
                     <div class="article-body">
                         <ul class="article-info">
-                            <li class="article-category"><a href="#">News</a></li>
+                            <li class="article-category"><a href="{{url('/show/'.$banner->url)}}">News</a></li>
                             <li class="article-type"><i class="fa fa-camera"></i></li>
                         </ul>
-                    <h2 class="article-title"><a href="#">{{$banner->headline}}</a></h2>
+                    <h2 class="article-title"><a href="{{url('/show/'.$banner->url)}}">{{$banner->headline}}</a></h2>
                         <ul class="article-meta">
-                            <li><i class="fa fa-clock-o"></i> January 31, 2017</li>
+                            <li><i class="fa fa-clock-o"></i> {{$banner->created_at->format('j F, Y')}}</li>
                             <li><i class="fa fa-comments"></i> 33</li>
                         </ul>
                     </div>

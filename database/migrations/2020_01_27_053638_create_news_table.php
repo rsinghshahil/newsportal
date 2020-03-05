@@ -22,6 +22,7 @@ class CreateNewsTable extends Migration
             $table->integer('status')->default(0);
             $table->string('author')->nullable();
             $table->longText('url')->nullable();
+            $table->unsignedInteger('popularity')->nullable();
             $table->timestamps();
         });
     }
