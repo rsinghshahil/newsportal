@@ -29,7 +29,7 @@
     <div id="center-header">
         <div class="container">
             <div class="header-logo">
-                <a href="#" class="logo"><img src="./img/logo DJ.png" alt="logo" style="height:90px;width:135px"></a>
+            <a href="#" class="logo"><img src="{{asset('/img/logo DJ.png')}}" alt="logo" style="height:90px;width:135px"></a>
                 {{--
                 <H2>DJ Sajha News</H2> --}}
             </div>
