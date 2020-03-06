@@ -34,7 +34,7 @@
                 <H2>DJ Sajha News</H2> --}}
             </div>
             <div class="header-ads">
-                <img class="center-block" src="./img/ad-2.jpg" alt="">
+                <img class="center-block" src="{{ asset('backend/images/ad.png')}}" alt="">
             </div>
         </div>
     </div>

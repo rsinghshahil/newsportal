@@ -42,12 +42,12 @@
     <link href="{{asset('backend/plugins/summernote/summernote.css')}}" rel="stylesheet" />
     <link href="{{asset('backend/plugins/jquery.filer/css/jquery.filer.css')}}" rel="stylesheet" />
     <link href="{{asset('backend/plugins/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css')}}" rel="stylesheet" />
-    
+
 </head>
 
-<body class="animsition">
+<body class="">
     <div class="page-wrapper">
-        <!-- HEADER MOBILE-->
+        <!--animsition HEADER MOBILE-->
             <header class="header-mobile d-block d-lg-none">
                 <div class="header-mobile__bar">
                     <div class="container-fluid">
@@ -95,7 +95,7 @@
                                     <li>
                                         <a href=""> <i class="fa fa-plus-square"></i>Manage News</a>
                                     </li>
-                                    
+
 
                                 </ul>
                             </li>
